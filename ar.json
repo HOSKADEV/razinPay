@@ -1,0 +1,31 @@
+{
+	"footer": {
+		"desc": "يعمل كوسيط للدفع بين البائعين والمشترين والوسطاء يعد هذا الموقع منصة إلكترونية تسهل عملية التعاملات المالية بين الأطراف المختلفة في عملية البيع والشراء في مختلف المجالات.",
+		"social":{
+			"insta":"",
+			"facebook":"",
+			"linkedin":""
+		},
+		"services": {
+			"tittle": "الخدمات",
+			"serv1": "المستهلكون",
+			"serv2": "الوسطاء",
+			"serv3": "البائعين"
+		},
+		"support": {
+			"tittle": "الدعم",
+			"privacy": "سياسة الخصوصية",
+			"conditions": "شروط الإستخدام",
+			"about": "ماهو Razinpay.com ؟",
+			"acount": "إنشاء حساب في Razinpay"
+		},
+		"contact": {
+			"tittle": "للتواصل معنا",
+			"aboutUs": "من نحن",
+			"info": "معلومات التواصل",
+			"phone": "+213666666666",
+			"email": "contact@razinpay.com"
+		},
+		"copyright":"© 2023 -2024 | Copyright | Razinpay, All rights reserved"
+	}
+}
