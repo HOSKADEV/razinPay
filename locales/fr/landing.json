@@ -1,0 +1,16 @@
+
+{   
+    "hero-section":{
+        "hero-header":"N'achetez ou ne vendez jamais en ligne sans utiliser",
+        "hero-description":"Avec razinpay.com, vous pouvez acheter et vendre n'importe quoi en toute sécurité sans risque de rétrofacturation. Paiements véritablement sécurisés."
+    },
+    "nav-bar":{
+        "nav-item-1":"Consommateur",
+        "nav-item-2":"Courtier",
+        "nav-item-3":"Entreprise",
+        "nav-item-4":"Aide",
+        "login":"Connexion",
+        "register":"S’inscrire"
+    },
+    "banner":"Protection complète des transactions de marchandises"
+}
