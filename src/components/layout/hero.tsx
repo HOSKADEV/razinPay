@@ -1,7 +1,6 @@
 import initTranslations from "@/app/i18n";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Images } from "@/components/images";
 import {
   Select,
   SelectContent,
@@ -20,8 +19,8 @@ interface HeroParams {
 const Hero = async ({ params: { locale, i18nNamespaces } }: HeroParams) => {
   const { t } = await initTranslations(locale, i18nNamespaces);
   return (
-    <section className="absolute w-full top-0 bg-[url(/hero/hero-bg.png)] bg-cover bg-center bg-no-repeat text-white overflow-hidden h-screen">
-      <div className="container flex flex-col px-6 mx-auto lg:flex-row ">
+    <section className="absolute w-full top-0 bg-[url('/hero/hero-bg.png')] bg-cover bg-center bg-no-repeat text-white overflow-hidden h-screen">
+      <div className="container flex px-6 justify-between h-full">
 		    <div className="flex flex-col justify-center px-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left rtl:lg:text-right">
 			    <h1 className="text-3xl font-bold sm:text-4xl">
           {t('hero-section.hero-header')} {" "} <span className="text-primary">RAZINPAY.COM</span>
@@ -71,12 +70,12 @@ const Hero = async ({ params: { locale, i18nNamespaces } }: HeroParams) => {
           </div>
 			    <div className="">
 				    <Button className="mt-8">Get started</Button>
-			    </div>
+			    </div> 
 		    </div>
-        <div className="hidden md:flex items-center justify-center px-6 lg:mt-0">
-            <div className="relative ltr:right-[-30%]">
-                <div className="flex aboslute">
-                  <div className="flex flex-col justify-center items-center absolute z-10 top-24 right-[25%] text-center">
+        <div className="hidden md:flex items-center justify-center px-6 lg:mt-0 h-full">
+            <div className="relative right-[30%] ltr:right-[-30%] h-full">
+                <div className="flex h-full">
+                  <div className="flex flex-col justify-center items-center absolute z-10  right-40 top-32 text-center">
                     <Image src="/hero/hero-banner.svg" alt="" className="object-contain" width={360} height={360}/>
                     <ul className="flex space-x-2 rtl:space-x-reverse">
                       <li className="w-2 h-2 bg-white rounded-full"></li>
@@ -89,7 +88,7 @@ const Hero = async ({ params: { locale, i18nNamespaces } }: HeroParams) => {
                       {t("banner")}
                     </p>
                   </div>
-                    <Image src="/hero/hero-banner-bg.svg" alt="" className="object-contain opacity-40" width={706} height={662}/>
+                    <Image src="/hero/hero-banner-bg.svg" alt="" className="opacity-40" width={1400} height={960}/>
               </div>
             </div>
 		    </div>

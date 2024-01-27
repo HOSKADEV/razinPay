@@ -155,4 +155,19 @@ export const Icons = {
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </svg>
   ),
+  dzFlag: (props: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-dz" viewBox="0 0 512 512" {...props}>
+  <path fill="#fff" d="M256 0h256v512H256z"/>
+  <path fill="#006233" d="M0 0h256v512H0z"/>
+  <path fill="#d21034" d="M367 192a128 128 0 1 0 0 128 102.4 102.4 0 1 1 0-128m4.2 64L256 218.4l71.7 98.2V195.4L256 293.6z"/>
+</svg>
+
+  ),
+  frFlag: (props: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-fr" viewBox="0 0 512 512" {...props}>
+  <path fill="#fff" d="M0 0h512v512H0z"/>
+  <path fill="#000091" d="M0 0h170.7v512H0z"/>
+  <path fill="#e1000f" d="M341.3 0H512v512H341.3z"/>
+</svg>
+  ),
 };
