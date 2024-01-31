@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server';
+import { NextRequest } from "next/server";
 
 export interface Config {
   locales: readonly string[];
@@ -7,5 +7,5 @@ export interface Config {
   localeDetector?: ((request: NextRequest, config: Config) => string) | false;
   prefixDefault?: boolean;
   basePath?: string;
-  serverSetCookie?: 'if-empty' | 'always';
+  serverSetCookie?: "if-empty" | "always";
 }

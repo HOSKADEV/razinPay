@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { I18nextProvider } from 'react-i18next';
-import { ReactNode } from 'react';
-import initTranslations from '@/app/i18n';
-import { Resource, createInstance } from 'i18next';
+import { I18nextProvider } from "react-i18next";
+import { ReactNode } from "react";
+import initTranslations from "@/app/i18n";
+import { Resource, createInstance } from "i18next";
 
 export default function TranslationsProvider({
   children,
   locale,
   namespaces,
-  resources
+  resources,
 }: {
   children: ReactNode;
   locale: string;

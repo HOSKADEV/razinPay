@@ -1,16 +1,81 @@
+{
+  "hero-section": {
+    "hero-header": "N'achetez ou ne vendez jamais en ligne sans utiliser",
+    "hero-desc": "Avec razinpay.com, vous pouvez acheter et vendre n'importe quoi en toute sécurité sans risque de rétrofacturation. Paiements véritablement sécurisés.",
+    "banner": "Protection complète des transactions de marchandises",
+    "action-button": "Commencer",
+    "trading": {
+      "sell": "j'achète",
+      "domain": "Domains",
+      "for": "pour",
+      "currency": {
+        "dz": "Dinar algérien",
+        "eu": "Euro",
+        "uk": "British Pound"
+      }
+    }
+  },
+  "nav-bar": {
+    "nav-item-1": "Consommateur",
+    "nav-item-2": "Courtier",
+    "nav-item-3": "Entreprise",
+    "nav-item-4": "Aide",
+    "login": "Connexion",
+    "register": "S’inscrire"
+  },
+  "steps": {
+    "heading": "Obtenez les transactions les mieux protégées avec",
+    "desc": "Nous fournissons un mode de paiement plus sécurisé dans les transactions entre vendeurs et acheteurs dans divers domaines",
+    "item-1": "L'acheteur et le vendeur sont d'accord",
+    "item-2": "L'acheteur soumet le paiement à Razinpay",
+    "item-3": "Le vendeur livre des biens ou un service à l'acheteur",
+    "item-4": "L'acheteur approuve les biens ou services",
+    "item-5": "Razinpay.com libère le paiement au vendeur",
+    "action-button": "Commencer"
+  },
+  "services": {
+    "heading": "Achetez et vendez des produits et services en toute sécurité",
+    "item-1-title": "Domains",
+    "item-1-desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis quam culpa veritatis, unde maiores eveniet iusto nam sed iste quibusdam perspiciatis incidunt sint voluptates cumque",
+    "item-2-title": "Domains",
+    "item-2-desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis quam culpa veritatis, unde maiores eveniet iusto nam sed iste quibusdam perspiciatis incidunt sint voluptates cumque",
+    "item-3-title": "Domains",
+    "item-3-desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis quam culpa veritatis, unde maiores eveniet iusto nam sed iste quibusdam perspiciatis incidunt sint voluptates cumque",
+    "item-4-title": "Domains",
+    "item-4-desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis quam culpa veritatis, unde maiores eveniet iusto nam sed iste quibusdam perspiciatis incidunt sint voluptates cumque",
+    "item-5-title": "Domains",
+    "item-5-desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis quam culpa veritatis, unde maiores eveniet iusto nam sed iste quibusdam perspiciatis incidunt sint voluptates cumque",
+    "item-6-title": "Domains",
+    "item-6-desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis quam culpa veritatis, unde maiores eveniet iusto nam sed iste quibusdam perspiciatis incidunt sint voluptates cumque",
+    "view-more": "En savoir plus",
+    "action-button": "Commencer"
+  },
+  "subscribe":{
+    "heading":"Obtenez plus d'assistance et vous recevrez toujours de nouvelles mises à jour",
+    "email":"email",
+    "action-button":"rappelle moi"
+  },
+  "footer": {
+    "desc": "Plateforme facilitant les transactions financières entre vendeurs, acheteurs et courtiers dans divers domaines.",
+    "services": {
+        "title": "Services",
+        "item-1": "Consommateurs",
+        "item-2": "Courtiers",
+        "item-3": "Vendeurs"
+    },
+    "support": {
+        "title": "Support",
+        "item-1": "Politique de confidentialité",
+        "item-2": "Conditions d'utilisation",
+        "item-3": "Qu'est-ce que Razinpay.com ?",
+        "item-4": "Créer un compte sur Razinpay"
+    },
+    "contact": {
+        "title": "Pour nous contacter",
+        "item-1": "À propos de nous",
+        "item-2": "Coordonnées"
+    },
+    "copyright": "Tous droits réservés"
+}
 
-{   
-    "hero-section":{
-        "hero-header":"N'achetez ou ne vendez jamais en ligne sans utiliser",
-        "hero-description":"Avec razinpay.com, vous pouvez acheter et vendre n'importe quoi en toute sécurité sans risque de rétrofacturation. Paiements véritablement sécurisés."
-    },
-    "nav-bar":{
-        "nav-item-1":"Consommateur",
-        "nav-item-2":"Courtier",
-        "nav-item-3":"Entreprise",
-        "nav-item-4":"Aide",
-        "login":"Connexion",
-        "register":"S’inscrire"
-    },
-    "banner":"Protection complète des transactions de marchandises"
 }
