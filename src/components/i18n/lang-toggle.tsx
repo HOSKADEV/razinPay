@@ -12,7 +12,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Icons } from "../icons";
-export function LangToggle() {
+import { useScrollTop } from "@/hooks/use-scroll-top";
+import { cn } from "@/lib/utils";
+export function LangToggle({ className }: { className: string }) {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   const router = useRouter();
@@ -42,10 +44,10 @@ export function LangToggle() {
   };
   return (
     <Select value={currentLocale} onValueChange={handleChange}>
-      <SelectTrigger className="border-none text-white focus:ring-0">
+      <SelectTrigger className={cn("border-none focus:ring-0", className)}>
         <SelectValue
           placeholder="AR"
-          className="my-4 flex items-center space-x-4 rtl:space-x-reverse"
+          className="my-4 flex items-center space-x-4 shadow-2xl rtl:space-x-reverse"
         />
       </SelectTrigger>
       <SelectContent align="end">

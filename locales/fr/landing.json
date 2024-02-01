@@ -16,12 +16,34 @@
     }
   },
   "nav-bar": {
-    "nav-item-1": "Consommateur",
-    "nav-item-2": "Courtier",
-    "nav-item-3": "Entreprise",
-    "nav-item-4": "Aide",
+    "consumers": {
+      "title": "Consommateurs",
+      "item-1": "Avantages pour les consommateurs",
+      "item-2": "Comment calculer les frais",
+      "item-3": "En savoir plus"
+    },
+    "sellers": {
+      "title": "Vendeurs",
+      "item-1": "Avantages pour les vendeurs",
+      "item-2": "Comment calculer les frais",
+      "item-3": "En savoir plus"
+    },
+    "brokers": {
+      "title": "Courtiers",
+      "item-1": "Avantages pour les courtiers",
+      "item-2": "Comment calculer les frais",
+      "item-3": "En savoir plus"
+    },
+    "help": {
+      "title": "Aide",
+      "item-1": "Qu'est-ce que Razinpay ?",
+      "item-2": "Avantages de Razinpay",
+      "item-3": "Contactez-nous"
+    },
     "login": "Connexion",
-    "register": "S’inscrire"
+    "register": "S’inscrire",
+    "desc": "Avec razinpay.com, vous pouvez acheter et vendre sans aucun risque avec une garantie de paiement.",
+    "action-button": "Commencer"
   },
   "steps": {
     "heading": "Obtenez les transactions les mieux protégées avec",
@@ -50,32 +72,40 @@
     "view-more": "En savoir plus",
     "action-button": "Commencer"
   },
-  "subscribe":{
-    "heading":"Obtenez plus d'assistance et vous recevrez toujours de nouvelles mises à jour",
-    "email":"email",
-    "action-button":"rappelle moi"
+  "subscribe": {
+    "heading": "Obtenez plus d'assistance et vous recevrez toujours de nouvelles mises à jour",
+    "email": "email",
+    "action-button": "rappelle moi"
+  },
+  "features": {
+    "feat-1-title": "Protection des paiements lors de l'achat et de la vente",
+    "feat-1-desc": "Les gens se tournent vers Razinpay.com lorsqu'ils ont besoin d'acheter ou de vendre quelque chose de valeur, mais qu'ils ne connaissent pas l'autre partie, peu importe où se déroule la transaction. Les clients utilisent notre service pour conclure des transactions, que ce soit à partir de sites d'annonces classées, de commerce en ligne, d'enchères ou de sites de commerce électronique.",
+    "feat-2-title": "Vérification des articles après le paiement",
+    "feat-2-desc": "Après que l'acheteur a payé au vendeur le montant du service ou du produit, Razinpay procède à une vérification des articles envoyés par le vendeur pendant la période convenue pour l'inspection. Si le produit est en bon état, les procédures restantes sont complétées. En cas de défaut ou de dommage, l'article peut être retourné pendant la période d'inspection sans dépasser cette période.",
+    "feat-3-title": "Facture de la transaction",
+    "feat-3-desc": "Une fois toutes les procédures terminées, une facture de la transaction peut être émise, comprenant tous les éléments qui ont été échangés entre le vendeur et l'acheteur pendant la transaction, avec le calcul des frais.",
+    "view-more": "En savoir plus"
   },
   "footer": {
     "desc": "Plateforme facilitant les transactions financières entre vendeurs, acheteurs et courtiers dans divers domaines.",
     "services": {
-        "title": "Services",
-        "item-1": "Consommateurs",
-        "item-2": "Courtiers",
-        "item-3": "Vendeurs"
+      "title": "Services",
+      "item-1": "Consommateurs",
+      "item-2": "Courtiers",
+      "item-3": "Vendeurs"
     },
     "support": {
-        "title": "Support",
-        "item-1": "Politique de confidentialité",
-        "item-2": "Conditions d'utilisation",
-        "item-3": "Qu'est-ce que Razinpay.com ?",
-        "item-4": "Créer un compte sur Razinpay"
+      "title": "Support",
+      "item-1": "Politique de confidentialité",
+      "item-2": "Conditions d'utilisation",
+      "item-3": "Qu'est-ce que Razinpay.com ?",
+      "item-4": "Créer un compte sur Razinpay"
     },
     "contact": {
-        "title": "Pour nous contacter",
-        "item-1": "À propos de nous",
-        "item-2": "Coordonnées"
+      "title": "Pour nous contacter",
+      "item-1": "À propos de nous",
+      "item-2": "Coordonnées"
     },
     "copyright": "Tous droits réservés"
-}
-
+  }
 }

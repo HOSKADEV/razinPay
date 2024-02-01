@@ -11,7 +11,7 @@ interface StepsParams {
 const Steps = async ({ params: { locale, i18nNamespaces } }: StepsParams) => {
   const { t } = await initTranslations(locale, i18nNamespaces);
   return (
-    <section className="container mb-36 space-y-6 lg:px-32 text-center ">
+    <section className="container mb-36 space-y-6 text-center lg:px-32 ">
       <div className="flex justify-center">
         <Image
           src="/steps/razin-big-heading-gradient.svg"
@@ -21,13 +21,13 @@ const Steps = async ({ params: { locale, i18nNamespaces } }: StepsParams) => {
         />
       </div>
       <div>
-        <h2 className="mb-2 text-xl md:text-4xl font-bold text-primary">
-          {t("steps.heading")} <br className="hidden md:block"/>{" "}
+        <h2 className="mb-2 text-xl font-bold text-primary md:text-4xl">
+          {t("steps.heading")} <br className="hidden md:block" />{" "}
           <span className="text-secondary">RAZINPAY.COM</span>
         </h2>
         <p>{t("steps.desc")}</p>
       </div>
-      <div className="grid grid-cols-2 gap-2 lg:gap-7 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-7">
         <div className="flex flex-col items-center justify-center ">
           <Image
             src="/steps/step-1.svg"

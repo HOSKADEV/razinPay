@@ -57,7 +57,7 @@ export default async function RootLayout({
             <Toaster />
             <SiteHeader />
             {children}
-            <SiteFooter/>
+            <SiteFooter />
           </body>
         </html>
       </TranslationsProvider>
