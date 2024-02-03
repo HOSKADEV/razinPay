@@ -1,0 +1,22 @@
+{
+    "title": "Pour nous contacter",
+    "desc": "Nous sommes là pour vous aider.",
+    "mail": {
+      "title": "Assistance par e-mail",
+      "content-1": "Veuillez vous connecter sur Razinpay.com",
+      "content-2": "Si vous souhaitez demander de l'aide concernant votre transaction, ou si vous souhaitez fournir des commentaires sur votre expérience avec nous. Vous pouvez également nous envoyer un e-mail à ",
+      "email": "support@Razinpay.com"
+    },
+    "phone": {
+      "title": "Assistance téléphonique",
+      "desc": "Veuillez nous contacter aux numéros de téléphone suivants :",
+      "num-1": "+21344444444",
+      "num-2": "+21366666666",
+      "num-3": "+21355555555"
+    },
+    "address": {
+      "title": "Siège social",
+      "addr": "Algérie. Wilaya d'Alger. Alger. Administration."
+    }
+  }
+  
