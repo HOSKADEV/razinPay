@@ -43,7 +43,7 @@ export default async function RootLayout({
   params: { locale: string };
 }) {
   const session = await auth();
-  const i18nNamespaces = ["landing", "shared"];
+  const i18nNamespaces = ["landing", "shared","profile"];
   const { resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <SessionProvider session={session}>
