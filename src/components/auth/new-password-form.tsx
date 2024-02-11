@@ -21,8 +21,11 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { newPassword } from "@/actions/new-password";
+import { useTranslation } from "react-i18next";
 
 export const NewPasswordForm = () => {
+  const { t } = useTranslation("auth");
+
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
@@ -50,11 +53,10 @@ export const NewPasswordForm = () => {
   };
 
   return (
-    <CardWrapper
-      headerLabel="Enter a new password"
-      backButtonLabel="Back to login"
-      backButtonHref="/auth/login"
-    >
+    <div >
+      <h2 className="text-center text-4xl text-primary">
+        {t("verification.heading")}
+      </h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -63,7 +65,7 @@ export const NewPasswordForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t("verification.password-label")}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -80,10 +82,10 @@ export const NewPasswordForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-            Reset password
+          {t("verification.reset-button")}
           </Button>
         </form>
       </Form>
-    </CardWrapper>
+    </div>
   );
 };

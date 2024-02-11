@@ -5,11 +5,13 @@ import { BeatLoader } from "react-spinners";
 import { useSearchParams } from "next/navigation";
 
 import { newVerification } from "@/actions/new-verification";
-import { CardWrapper } from "@/components/auth/card-wrapper";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
+import { useTranslation } from "react-i18next";
 
 export const NewVerificationForm = () => {
+  const { t } = useTranslation("auth");
+
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
 
@@ -40,16 +42,15 @@ export const NewVerificationForm = () => {
   }, [onSubmit]);
 
   return (
-    <CardWrapper
-      headerLabel="Confirming your verification"
-      backButtonLabel="Back to login"
-      backButtonHref="/auth/login"
-    >
+    <div className="w-2/3 space-y-10">
+      <h2 className="text-center text-4xl text-primary">
+        {t("verification.heading")}
+      </h2>
       <div className="flex w-full items-center justify-center">
         {!success && !error && <BeatLoader />}
         <FormSuccess message={success} />
         {!success && <FormError message={error} />}
       </div>
-    </CardWrapper>
+    </div>
   );
 };

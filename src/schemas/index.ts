@@ -63,9 +63,31 @@ export const RegisterSchema = z.object({
   email: z.string().email({
     message: "Email is required",
   }),
-  password: z.string().min(6, {
-    message: "Minimum 6 characters required",
-  }),
+  password: z.string().refine(
+    (value) => {
+      if (value.length < 8) {
+        return false;
+      }
+
+      if (!/[A-Z]/.test(value)) {
+        return false;
+      }
+
+      if (!/[a-z]/.test(value)) {
+        return false;
+      }
+
+      if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value)) {
+        return false;
+      }
+
+      return true;
+    },
+    {
+      message:
+        "Password must be at least 8 characters long. \ncontain at least one uppercase letter, one lowercase letter. \none special character",
+    },
+  ),
   name: z.string().min(1, {
     message: "Name is required",
   }),

@@ -1,0 +1,34 @@
+{
+  "heading": "Comment calculer les frais avec",
+  "title": "Comment calculer les frais",
+  "updated": "Dernière mise à jour: 06 novembre 2023",
+  "desc": "Lors de l'achat ou de la vente de tout produit via Razinpay, les frais seront affichés avec la transaction. Si vous avez des questions concernant des frais spécifiques, veuillez nous contacter.",
+  "features": {
+    "title": "Nous vous offrons les moyens nécessaires pour organiser vos opérations financières à travers nos solutions électroniques, qui fonctionnent pour:",
+    "item-1": "Collecter vos fonds depuis chez vous et dans les plus brefs délais.",
+    "item-2": "Payer vos factures en quelques instants.",
+    "item-3": "Réclamer la collecte de vos fonds dus avec le moins d'effort possible.",
+    "item-4": "Envoyer vos factures par e-mail, téléphone ou même WhatsApp.",
+    "item-5": "Réaliser un grand nombre de transactions financières électroniques de manière très simple.",
+    "item-6": "Savoir ce que vous devez payer et recevoir dans un délai défini et vous rappeler de vos obligations."
+  },
+  "table": {
+    "head-1": "Domaines",
+    "head-2": "Frais",
+    "domains": {
+      "item-1": "Domaine 1",
+      "item-2": "Domaine 2",
+      "item-3": "Domaine 3",
+      "item-4": "Domaine 4",
+      "item-5": "Domaine 5",
+      "item-7": "Domaine 7"
+    },
+    "fees": {
+      "item-1": "0,00",
+      "item-2": "0,00",
+      "item-3": "0,00",
+      "item-4": "0,00",
+      "item-5": "0,00"
+    }
+  }
+}

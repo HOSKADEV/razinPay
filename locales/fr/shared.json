@@ -1,3 +1,55 @@
 {
-  "action-button": "Commencer"
+  "action-button": "Commencer",
+  "about": {
+    "heading": "Qu'est-ce que"
+  },
+  "consumers": {
+    "heading": "Avantages pour les consommateurs"
+  },
+  "calculate-fees": {
+    "heading": "Comment calculer les frais avec"
+  },
+  "brokers-services": {
+    "heading": {
+      "first": "Service",
+      "second": "pour les transactions de courtage"
+    }
+  },
+  "sellers-services": {
+    "heading": {
+      "first": "Service",
+      "second": "pour les transactions de vente"
+    }
+  },
+
+  "sidebar": {
+    "heading": "Foire aux questions",
+    "link-1": "Qu'est-ce que Razinpay et comment ça marche ?",
+    "link-2": "Avantages de Razinpay",
+    "link-3": "Comment calculer les frais ?",
+    "link-4": "Avantages pour les consommateurs",
+    "link-5": "Avantages pour les courtiers",
+    "link-6": "Avantages pour les vendeurs"
+  },
+  "more-support": {
+    "title": "Support supplémentaire",
+    "desc": "Si vous avez encore des questions sur la façon dont Razinpay.com peut vous aider, ou si vous avez besoin d'une assistance supplémentaire pour comprendre le processus et configurer la transaction, n'hésitez pas à",
+    "contact-link": "nous contacter"
+  },
+  "card-title": "Profitez des meilleures transactions financières dans divers secteurs commerciaux",
+  "tutorial": {
+    "title": "En savoir plus sur Razinpay?",
+    "desc": "Découvrez davantage sur la façon dont les paiements sont effectués entre les vendeurs, les acheteurs et les courtiers."
+  },
+  "trading": {
+    "sell": "j'achète",
+    "domain": "Domains",
+    "for": "pour",
+    "currency": {
+      "dz": "Dinar algérien",
+      "eu": "Euro",
+      "uk": "British Pound"
+    },
+    "fees": "Frais de transaction"
+  }
 }

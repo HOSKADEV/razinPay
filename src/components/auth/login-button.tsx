@@ -23,7 +23,7 @@ export const LoginButton = ({
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`${locale}/auth/login`);
+    router.push(`/${locale}/auth/login`);
   };
 
   if (mode === "modal") {

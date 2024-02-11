@@ -16,8 +16,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+
 export function MainNav() {
   const pathname = usePathname();
   const { t, i18n } = useTranslation("landing");
@@ -26,7 +26,7 @@ export function MainNav() {
   const consumers: { title: string; href: string }[] = [
     {
       title: t("nav-bar.consumers.item-1"),
-      href: "/consumers/benefits",
+      href: "/consumers-benefits",
     },
     {
       title: t("nav-bar.consumers.item-2"),
@@ -40,7 +40,7 @@ export function MainNav() {
   const sellers: { title: string; href: string }[] = [
     {
       title: t("nav-bar.sellers.item-1"),
-      href: "/seller/benefits",
+      href: "/sellers-services",
     },
     {
       title: t("nav-bar.sellers.item-2"),
@@ -54,7 +54,7 @@ export function MainNav() {
   const brokers: { title: string; href: string }[] = [
     {
       title: t("nav-bar.brokers.item-1"),
-      href: "/seller-benefits",
+      href: "/brokers-services",
     },
     {
       title: t("nav-bar.brokers.item-2"),
@@ -68,21 +68,21 @@ export function MainNav() {
   const help: { title: string; href: string }[] = [
     {
       title: t("nav-bar.help.item-1"),
-      href: "/seller-benefits",
+      href: "/about",
     },
     {
       title: t("nav-bar.help.item-2"),
-      href: "/calculate-fees",
+      href: "/razin-benefits",
     },
     {
       title: t("nav-bar.help.item-3"),
-      href: "/learn-more",
+      href: "/contact",
     },
   ];
   return (
     <div
       className={cn(
-        "mr-4 hidden w-full items-center justify-between md:flex",
+        "mr-4 hidden w-full items-center space-x-24 space-x-reverse md:flex",
         scrolled ? "bg-white" : "bg-transparent",
       )}
     >
@@ -120,7 +120,7 @@ export function MainNav() {
                 {t("nav-bar.consumers.title")}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="space-y-6 p-6">
-                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[800px]">
+                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[700px]">
                   {consumers.map((component) => (
                     <ListItem
                       key={component.title}
@@ -129,7 +129,7 @@ export function MainNav() {
                     />
                   ))}
                 </ul>
-                <div className="flex items-center justify-between gap-4 border-2 border-primary p-4 rtl:flex-row-reverse">
+                <div className="flex items-center justify-between gap-4 rounded-lg border-2 border-primary p-4 rtl:flex-row-reverse">
                   <p>{t("nav-bar.desc")}</p>
                   <Button variant="outline">
                     {t("nav-bar.action-button")}
@@ -149,7 +149,7 @@ export function MainNav() {
                 {t("nav-bar.brokers.title")}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="space-y-6 p-6">
-                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[800px]">
+                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[700px]">
                   {brokers.map((component) => (
                     <ListItem
                       key={component.title}
@@ -158,7 +158,7 @@ export function MainNav() {
                     />
                   ))}
                 </ul>
-                <div className="flex items-center justify-between gap-4 border-2 border-primary p-4 rtl:flex-row-reverse">
+                <div className="flex items-center justify-between gap-4 rounded-lg border-2 border-primary p-4 rtl:flex-row-reverse">
                   <p>{t("nav-bar.desc")}</p>
                   <Button variant="outline">
                     {t("nav-bar.action-button")}
@@ -178,7 +178,7 @@ export function MainNav() {
                 {t("nav-bar.sellers.title")}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="space-y-6 p-6">
-                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[800px]">
+                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[700px]">
                   {sellers.map((component) => (
                     <ListItem
                       key={component.title}
@@ -187,7 +187,7 @@ export function MainNav() {
                     />
                   ))}
                 </ul>
-                <div className="flex items-center justify-between gap-4 border-2 border-primary p-4 rtl:flex-row-reverse">
+                <div className="flex items-center justify-between gap-4 rounded-lg border-2 border-primary p-4 rtl:flex-row-reverse">
                   <p>{t("nav-bar.desc")}</p>
                   <Button variant="outline">
                     {t("nav-bar.action-button")}
@@ -207,7 +207,7 @@ export function MainNav() {
                 {t("nav-bar.help.title")}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="space-y-6 p-6">
-                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[800px]">
+                <ul className="grid w-[400px] grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[700px]">
                   {help.map((component) => (
                     <ListItem
                       key={component.title}
@@ -216,7 +216,7 @@ export function MainNav() {
                     />
                   ))}
                 </ul>
-                <div className="flex items-center justify-between gap-4 border-2 border-primary p-4 rtl:flex-row-reverse">
+                <div className="flex items-center justify-between gap-4 rounded-lg border-2 border-primary p-4 rtl:flex-row-reverse">
                   <p>{t("nav-bar.desc")}</p>
                   <Button variant="outline">
                     {t("nav-bar.action-button")}
@@ -227,28 +227,6 @@ export function MainNav() {
           </NavigationMenuList>
         </NavigationMenu>
       </nav>
-      <div className="flex items-center space-x-4 rtl:space-x-reverse">
-        <LangToggle
-          className={
-            scrolled || (pathname !== "/fr" && pathname !== "/")
-              ? "text-black"
-              : "text-white"
-          }
-        />
-      </div>
-      <div className="space-x-4 rtl:space-x-reverse">
-        <Button
-          variant="ghost"
-          className={
-            scrolled || (pathname !== "/fr" && pathname !== "/")
-              ? "text-black"
-              : "text-white"
-          }
-        >
-          {t("nav-bar.login")}
-        </Button>
-        <Button variant="secondary">{t("nav-bar.register")}</Button>
-      </div>
     </div>
   );
 }
@@ -260,16 +238,19 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
+          href={props.href!}
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md border border-border p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className,
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none text-center">{title}</div>
-        </a>
+          <div className="text-center text-sm font-medium leading-none">
+            {title}
+          </div>
+        </Link>
       </NavigationMenuLink>
     </li>
   );

@@ -11,10 +11,42 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { siteConfig } from "@/config/site-config";
-import { navLinks } from "@/config/nav-links";
+import { useTranslation } from "react-i18next";
 
 export function MobileNav() {
+  const { t} = useTranslation("landing");
   const [open, setOpen] = React.useState(false);
+  
+  const navLinks = [
+    {
+      title: t("nav-bar.consumers.item-1"),
+      href: "/consumers-benefits",
+    },
+    {
+      title: t("nav-bar.consumers.item-2"),
+      href: "/calculate-fees",
+    },
+    {
+      title: t("nav-bar.sellers.item-1"),
+      href: "/sellers-services",
+    },
+    {
+      title: t("nav-bar.brokers.item-1"),
+      href: "/brokers-services",
+    },
+    {
+      title: t("nav-bar.help.item-1"),
+      href: "/about",
+    },
+    {
+      title: t("nav-bar.help.item-2"),
+      href: "/razin-benefits",
+    },
+    {
+      title: t("nav-bar.help.item-3"),
+      href: "/contact",
+    },
+  ];
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -30,11 +62,11 @@ export function MobileNav() {
       <SheetContent side="left" className="pr-0">
         <MobileLink
           href="/"
-          className="flex items-center"
+          className="flex items-center rtl:justify-end"
           onOpenChange={setOpen}
         >
-          <Icons.logo className="mr-2 h-4 w-4" />
-          <span className="font-bold">{siteConfig.applicationName}</span>
+          <Icons.logoWhiteBg className="" />
+          {/* <span className="font-bold">{siteConfig.applicationName}</span> */}
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
@@ -76,7 +108,7 @@ function MobileLink({
         router.push(href.toString());
         onOpenChange?.(false);
       }}
-      className={cn(className)}
+      className={cn(className, "underline underline-offset-2")}
       {...props}
     >
       {children}

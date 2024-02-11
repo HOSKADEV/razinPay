@@ -1,0 +1,29 @@
+{
+  "desc": "La transaction à trois parties sur Razinpay.com offre aux courtiers la possibilité de démarrer, gérer et clôturer chaque processus de vente en toute simplicité, sécurité et particulièrement.",
+  "item-1": {
+    "title": "Service Razinpay pour les transactions de courtage",
+    "desc": "Vous pouvez être assuré que la protection que nous offrons aux acheteurs et aux vendeurs aura un impact positif sur la finalisation de vos ventes en ligne. Le processus est extrêmement simple, nos frais sont équitables et chaque accord est sécurisé et garanti pour accélérer vos transactions de la manière la plus efficace. Commencez votre transaction de courtage dès maintenant."
+  },
+  "item-2": {
+    "title": "Avantages des services Razinpay pour les courtiers",
+    "ul": {
+      "li-1": "Gestion confidentielle de votre acheteur et vendeur",
+      "li-2": "Gérez toutes vos transactions financières commerciales de A à Z",
+      "li-3": "Un suivi fiable garantit que vos frais de courtage sont sécurisés",
+      "li-4": "Solution de paiement en ligne économique et abordable",
+      "li-5": "Faible risque grâce à un processus de paiement en ligne très sécurisé",
+      "li-6": "Facilités et support client garantis, ainsi que des mises à jour"
+    }
+  },
+  "item-3": {
+    "title": "Comment fonctionne Razinpay pour les courtiers",
+    "desc": "Le site Razinpay.com réduit les risques de fraude en agissant comme une tierce partie de confiance qui collecte, retient et distribue les fonds uniquement lorsque les acheteurs et les vendeurs sont satisfaits. Commencer à utiliser Razinpay est facile, et l'utilisation du système de base est extrêmement simple.",
+    "ul": {
+      "li-1": "L'acheteur, le vendeur et le courtier acceptent les termes. Le courtier commence une transaction à trois. Après s'être connecté à razinpay.com, toutes les parties acceptent les conditions de la transaction. L'acheteur paie Razinpay.com.",
+      "li-2": "L'acheteur effectue un paiement en choisissant une méthode de paiement qualifiée, et Razinpay.com vérifie le paiement, informant le courtier et le vendeur que les fonds sont sécurisés.",
+      "li-3": "Le vendeur expédie la marchandise à l'acheteur. Après vérification du paiement, le vendeur est autorisé à expédier les marchandises et toute information de suivi pour le transport, l'expédition ou la livraison.",
+      "li-4": "Razinpay.com vérifie la réception de la marchandise par l'acheteur. Le courtier est informé. L'acheteur accepte la marchandise.",
+      "li-5": "L'acheteur a un certain nombre de jours pour inspecter la marchandise et a le choix de l'accepter ou de la refuser. L'acheteur accepte la marchandise. Razinpay.com paie le courtier et le vendeur. Votre transaction est terminée en toute sécurité!"
+    }
+  }
+}

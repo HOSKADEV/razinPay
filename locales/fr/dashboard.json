@@ -1,0 +1,18 @@
+{
+    "home": {
+        "heading": "Mes transactions",
+        "new-deal-btn": "Ajouter une transaction",
+        "no-result": "Aucune transaction trouvée",
+        "search": "Rechercher",
+          
+        "table-header": {
+          "id": "Id",
+          "title": "Titre",
+          "date": "Date",
+          "price": "Prix",
+          "role": "Rôle",
+          "status": "Statut"
+        }
+          
+    }
+}

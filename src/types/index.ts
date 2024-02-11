@@ -1,11 +1,8 @@
-import { NextRequest } from "next/server";
-
-export interface Config {
-  locales: readonly string[];
-  defaultLocale: string;
-  localeCookie?: string;
-  localeDetector?: ((request: NextRequest, config: Config) => string) | false;
-  prefixDefault?: boolean;
-  basePath?: string;
-  serverSetCookie?: "if-empty" | "always";
+export type Deal = {
+  id: number
+  title: string
+  date: string
+  price : number
+  status: "pending" | "processing" | "success" | "failed"
+  role: "seller" | "consumer" | "broker"
 }

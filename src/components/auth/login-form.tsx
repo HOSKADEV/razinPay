@@ -17,13 +17,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { CardWrapper } from "@/components/auth/card-wrapper";
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { login } from "@/actions/login";
+import { useTranslation } from "react-i18next";
 
 export const LoginForm = () => {
+  const { t } = useTranslation("auth");
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const urlError =
@@ -70,12 +71,11 @@ export const LoginForm = () => {
   };
 
   return (
-    <CardWrapper
-      headerLabel="Welcome back"
-      backButtonLabel="Don't have an account?"
-      backButtonHref="/auth/register"
-      showSocial
-    >
+    <div className="w-2/3 space-y-10">
+      <h2 className="text-center text-4xl text-primary">
+        {t("login.heading")}
+        <br /> <span className="font-bold text-secondary">Razinpay.com</span>
+      </h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -105,13 +105,17 @@ export const LoginForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="uppercase">
+                        {t("email-label")}{" "}
+                        <span className="text-destructive">*</span>
+                      </FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           disabled={isPending}
                           placeholder="john.doe@example.com"
                           type="email"
+                          className="placeholder:text-gray-400"
                         />
                       </FormControl>
                       <FormMessage />
@@ -123,13 +127,17 @@ export const LoginForm = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="uppercase">
+                        {t("password-label")}{" "}
+                        <span className="text-destructive">*</span>
+                      </FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           disabled={isPending}
                           placeholder="******"
                           type="password"
+                          className="placeholder:text-gray-400"
                         />
                       </FormControl>
                       <Button
@@ -138,7 +146,7 @@ export const LoginForm = () => {
                         asChild
                         className="px-0 font-normal"
                       >
-                        <Link href="/auth/reset">Forgot password?</Link>
+                        <Link href="/auth/reset">{t("login.forget-pswd")}</Link>
                       </Button>
                       <FormMessage />
                     </FormItem>
@@ -150,10 +158,10 @@ export const LoginForm = () => {
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-            {showTwoFactor ? "Confirm" : "Login"}
+            {showTwoFactor ? "Confirm" : t("login.action-button")}
           </Button>
         </form>
       </Form>
-    </CardWrapper>
+    </div>
   );
 };

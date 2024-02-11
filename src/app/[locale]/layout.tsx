@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site-config";
 import { SiteHeader } from "@/components/layout/site-header";
 
 import localFont from "next/font/local";
-import initTranslations from "../i18n";
+import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/providers/TranslationsProvider";
 import { SiteFooter } from "@/components/layout/site-footer";
 
@@ -43,7 +43,7 @@ export default async function RootLayout({
   params: { locale: string };
 }) {
   const session = await auth();
-  const i18nNamespaces = ["landing", "shared"];
+  const i18nNamespaces = ["landing", "shared","dashboard"];
   const { resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <SessionProvider session={session}>

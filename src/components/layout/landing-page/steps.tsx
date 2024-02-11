@@ -1,6 +1,7 @@
 import initTranslations from "@/app/i18n";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 interface StepsParams {
   params: {
     locale: string;
@@ -75,7 +76,11 @@ const Steps = async ({ params: { locale, i18nNamespaces } }: StepsParams) => {
         </div>
       </div>
       <div>
-        <Button className="">{t("steps.action-button")}</Button>
+        <Button asChild>
+          <Link href="/dashboard">
+          {t("steps.action-button")}
+          </Link>
+        </Button>
       </div>
     </section>
   );

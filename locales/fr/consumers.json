@@ -1,34 +1,40 @@
 {
-    "benefits": {
-        "heading": "Avantages pour les consommateurs",
-        "title": "Comment les consommateurs bénéficient-ils de Razinpay ?",
-        "desc": "Razinpay offre de nombreux avantages aux consommateurs, notamment :",
-        "item-1-title": "Confort",
-        "item-1-desc": "Les consommateurs peuvent effectuer des transactions financières de n'importe où et à tout moment, tant qu'ils sont connectés à Internet. Cela signifie qu'il n'est pas nécessaire de s'inquiéter des heures d'ouverture des banques ou d'attendre dans les files d'attente.",
-        "item-2-title": "Rapidité",
-        "item-2-desc": "Razinpay permet aux consommateurs d'envoyer et de recevoir de l'argent instantanément, en en faisant une option idéale pour les transactions urgentes.",
-        "item-3-title": "Sécurité",
-        "item-3-desc": "Nous utilisons des techniques de cryptage avancées pour garantir la sécurité des transactions. De plus, de nombreuses fonctionnalités offrent une protection pour l'acheteur, permettant aux consommateurs d'obtenir un remboursement en cas de problème avec la transaction.",
-        "item-4-title": "Coût",
-        "item-4-desc": "Dans de nombreux cas, il est moins coûteux que les méthodes de paiement traditionnelles. Par exemple, les frais de guichet automatique ou les frais de virement bancaire peuvent souvent être évités.",
-        "item-5-title": "Facilité",
-        "item-5-desc": "Avec Razinpay, il est facile de suivre les transactions et de gérer le budget. Les consommateurs peuvent consulter l'historique des transactions et le solde actuel à tout moment.",
-        "item-6-title": "Suivi des paiements",
-        "item-6-desc": "Nous vous fournissons des rapports détaillés et des outils pour suivre les transactions, ce qui facilite la gestion des budgets et la vérification des dépenses.",
-        "item-7-title": "Intégration",
-        "item-7-desc": "Les comptes Razinpay peuvent être liés à de nombreuses applications et services en ligne, permettant aux utilisateurs d'effectuer des paiements au sein de ces applications et services en toute simplicité.",
-        "item-8-title": "Économies",
-        "item-8-desc": "Nous sommes heureux d'offrir souvent des remises ou des points de récompense aux utilisateurs, ce qui leur permet d'économiser de l'argent.",
-        "sidebar": {
-            "heading": "Questions fréquentes",
-            "link-1": "Qu'est-ce que Razinpay et comment ça marche ?",
-            "link-2": "Avantages de Razinpay",
-            "link-3": "Comment calculer les frais ?",
-            "link-4": "Avantages pour les consommateurs",
-            "link-5": "Avantages pour les courtiers",
-            "link-6": "Avantages pour les vendeurs"
-        }
+  "benefits": {
+    "heading": "Avantages pour les consommateurs",
+    "title": "Comment les consommateurs bénéficient-ils de Razinpay ?",
+    "desc": "Razinpay offre de nombreux avantages aux consommateurs, notamment :",
+    "item-1-title": "Confort",
+    "item-1-desc": "Les consommateurs peuvent effectuer des transactions financières de n'importe où et à tout moment, tant qu'ils sont connectés à Internet. Cela signifie qu'il n'est pas nécessaire de s'inquiéter des heures d'ouverture des banques ou d'attendre dans les files d'attente.",
+    "item-2-title": "Rapidité",
+    "item-2-desc": "Razinpay permet aux consommateurs d'envoyer et de recevoir de l'argent instantanément, en en faisant une option idéale pour les transactions urgentes.",
+    "item-3-title": "Sécurité",
+    "item-3-desc": "Nous utilisons des techniques de cryptage avancées pour garantir la sécurité des transactions. De plus, de nombreuses fonctionnalités offrent une protection pour l'acheteur, permettant aux consommateurs d'obtenir un remboursement en cas de problème avec la transaction.",
+    "item-4-title": "Coût",
+    "item-4-desc": "Dans de nombreux cas, il est moins coûteux que les méthodes de paiement traditionnelles. Par exemple, les frais de guichet automatique ou les frais de virement bancaire peuvent souvent être évités.",
+    "item-5-title": "Facilité",
+    "item-5-desc": "Avec Razinpay, il est facile de suivre les transactions et de gérer le budget. Les consommateurs peuvent consulter l'historique des transactions et le solde actuel à tout moment.",
+    "item-6-title": "Suivi des paiements",
+    "item-6-desc": "Nous vous fournissons des rapports détaillés et des outils pour suivre les transactions, ce qui facilite la gestion des budgets et la vérification des dépenses.",
+    "item-7-title": "Intégration",
+    "item-7-desc": "Les comptes Razinpay peuvent être liés à de nombreuses applications et services en ligne, permettant aux utilisateurs d'effectuer des paiements au sein de ces applications et services en toute simplicité.",
+    "item-8-title": "Économies",
+    "item-8-desc": "Nous sommes heureux d'offrir souvent des remises ou des points de récompense aux utilisateurs, ce qui leur permet d'économiser de l'argent.",
+    "card-title": "Profitez des meilleures transactions financières dans divers secteurs commerciaux",
+    "card-action-button": "Commencer",
+
+    "sidebar": {
+      "heading": "Questions fréquentes",
+      "link-1": "Qu'est-ce que Razinpay et comment ça marche ?",
+      "link-2": "Avantages de Razinpay",
+      "link-3": "Comment calculer les frais ?",
+      "link-4": "Avantages pour les consommateurs",
+      "link-5": "Avantages pour les courtiers",
+      "link-6": "Avantages pour les vendeurs"
+    },
+    "more-support": {
+      "title": "Support supplémentaire",
+      "desc": "Si vous avez encore des questions sur la façon dont Razinpay.com peut vous aider, ou si vous avez besoin d'une assistance supplémentaire pour comprendre le processus et configurer la transaction, n'hésitez pas à",
+      "contact-link": "nous contacter"
     }
-    
-    
+  }
 }
