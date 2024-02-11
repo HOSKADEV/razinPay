@@ -13,6 +13,11 @@
           "role": "Rôle",
           "status": "Statut"
         }
-          
+    },
+    "wallet": {
+      "heading": "Ma portefeuille",
+      "new-deal-btn": "Nouvelle transaction",
+      "account-nbr": "Numéro de compte :",
+      "total": "Total :"
     }
 }

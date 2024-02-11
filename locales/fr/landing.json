@@ -40,8 +40,12 @@
       "item-2": "Avantages de Razinpay",
       "item-3": "Contactez-nous"
     },
+    "user-menu":{
+      "logout": "Déconnexion",
+      "profile":"Profil",
+      "wallet":"Ma portefeuille"
+    },
     "login": "Connexion",
-    "logout": "Déconnexion",
     "register": "S’inscrire",
     "desc": "Avec razinpay.com, vous pouvez acheter et vendre sans aucun risque avec une garantie de paiement.",
     "action-button": "Commencer"

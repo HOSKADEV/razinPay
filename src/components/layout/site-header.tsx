@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 import { useTranslation } from "react-i18next";
 import { LogOut } from "lucide-react";
 import { LangToggle } from "../i18n/lang-toggle";
+import { UserButton } from "../auth/user-button";
 
 export function SiteHeader() {
   const scrolled = useScrollTop();
@@ -60,19 +61,7 @@ export function SiteHeader() {
               </>
             )}
             {session.data && (
-              <LogoutButton>
-                <Button
-                  variant="ghost"
-                  className={
-                    scrolled || (pathname !== "/fr" && pathname !== "/")
-                      ? "flex items-center space-x-1 text-black rtl:space-x-reverse"
-                      : "flex items-center space-x-1 text-white rtl:space-x-reverse"
-                  }
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>{t("nav-bar.logout")}</span>
-                </Button>
-              </LogoutButton>
+              <UserButton/>
             )}
           </nav>
         </div>

@@ -13,10 +13,12 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "@/components/auth/logout-button";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export const UserButton = () => {
   const user = useCurrentUser();
-
+  const { t } = useTranslation("landing");
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -28,22 +30,22 @@ export const UserButton = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="end">
+        <Link href="/profile">
+        <DropdownMenuItem className="cursor-pointer">
+        {t("nav-bar.user-menu.profile")}
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/wallet">
+        <DropdownMenuItem className="cursor-pointer">
+        {t("nav-bar.user-menu.wallet")}
+          </DropdownMenuItem>
+        </Link>
         <LogoutButton>
           <DropdownMenuItem className="cursor-pointer">
             <ExitIcon className="mr-2 h-4 w-4" />
-            Logout
+            {t("nav-bar.user-menu.logout")}
           </DropdownMenuItem>
         </LogoutButton>
-        <Link href="/my-wallet">
-        <DropdownMenuItem className="cursor-pointer">
-            My wallet
-          </DropdownMenuItem>
-        </Link>
-        <Link href="/profile">
-        <DropdownMenuItem className="cursor-pointer">
-            Profile
-          </DropdownMenuItem>
-        </Link>
       </DropdownMenuContent>
     </DropdownMenu>
   );
