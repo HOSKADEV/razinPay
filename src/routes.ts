@@ -4,15 +4,23 @@
  * @type {string[]}
  */
 export const publicRoutes = [
-    "/","/fr",
-    "/auth/new-verification", "/fr/auth/new-verification",
-    "/about","/fr/about",
-    "/brokers-services","/fr/brokers-services",
-    "/sellers-services","/fr/sellers-services",
-    "/consumers-benefits","/fr/consumers-benefits",
-    "/razin-benefits","/fr/razin-benefits",
-    "/calculate-fees","/fr/calculate-fees",
- ];
+  "/",
+  "/fr",
+  "/auth/new-verification",
+  "/fr/auth/new-verification",
+  "/about",
+  "/fr/about",
+  "/brokers-services",
+  "/fr/brokers-services",
+  "/sellers-services",
+  "/fr/sellers-services",
+  "/consumers-benefits",
+  "/fr/consumers-benefits",
+  "/razin-benefits",
+  "/fr/razin-benefits",
+  "/calculate-fees",
+  "/fr/calculate-fees",
+];
 
 /**
  * An array of routes that are used for authentication

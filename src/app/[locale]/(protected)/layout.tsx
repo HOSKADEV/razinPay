@@ -10,9 +10,7 @@ const ProtectedLayout = async ({ children }: ProtectedLayoutProps) => {
     return redirect("/auth/login");
   }
   return (
-    <main className="bg-muted-foreground h-full w-full">
-        {children}
-    </main>
+    <main className="min-h-screen w-full bg-muted-foreground">{children}</main>
   );
 };
 

@@ -1,5 +1,5 @@
-"use client"
-import * as React from "react"
+"use client";
+import * as React from "react";
 
 import {
   ColumnDef,
@@ -11,7 +11,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -20,26 +20,26 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Input } from "./input"
-import { useTranslation } from "react-i18next"
+} from "@/components/ui/table";
+import { Input } from "./input";
+import { useTranslation } from "react-i18next";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const {t} = useTranslation("dashboard")
-  const [sorting, setSorting] = React.useState<SortingState>([])
- 
+  const { t } = useTranslation("dashboard");
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
- 
+    [],
+  );
+
   const table = useReactTable({
     data,
     columns,
@@ -53,12 +53,11 @@ export function DataTable<TData, TValue>({
       sorting,
       columnFilters,
     },
-  })
-
+  });
 
   return (
-    <div className="border shadow-lg bg-white text-black rounded-lg">
-      <div className="flex items-center py-4 px-4">
+    <div className="rounded-lg border bg-white text-black shadow-lg">
+      <div className="flex items-center px-4 py-4">
         <Input
           placeholder={t("home.search")}
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
@@ -71,23 +70,26 @@ export function DataTable<TData, TValue>({
       <Table>
         <TableHeader className="border-t">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id} >
+            <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="bg-muted-foreground text-black text-left rtl:text-right">
+                  <TableHead
+                    key={header.id}
+                    className="bg-muted-foreground text-left text-black rtl:text-right"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
-                )
+                );
               })}
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody >
+        <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
@@ -95,7 +97,7 @@ export function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} >
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -111,5 +113,5 @@ export function DataTable<TData, TValue>({
         </TableBody>
       </Table>
     </div>
-  )
+  );
 }

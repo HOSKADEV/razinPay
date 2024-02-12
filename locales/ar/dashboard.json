@@ -1,22 +1,48 @@
 {
-    "home":{
-        "heading":"معاملاتي",
-        "new-deal-btn":"اضافة معاملة",
-        "no-result":"لا توجد اي معاملة",
-        "search":"بحث",
-        "table-header":{
-            "id":"المعرف",
-            "title":"عنوان المعاملة",
-            "date":"التاريخ",
-            "price":"السعر",
-            "role":"الدور",
-            "status":"الحالة"
-        }
+  "home": {
+    "heading": "معاملاتي",
+    "new-deal-btn": "اضافة معاملة",
+    "no-result": "لا توجد اي معاملة",
+    "search": "بحث",
+    "table-header": {
+      "id": "المعرف",
+      "title": "عنوان المعاملة",
+      "date": "التاريخ",
+      "price": "السعر",
+      "role": "الدور",
+      "status": "الحالة"
     },
-    "wallet":{
-        "heading":"محفضتي",
-        "new-deal-btn":"سحب الأموال",
-        "account-nbr":"الحساب رقم :",
-        "total":"المجموع :"
+    "new-deal": {
+      "heading": "إبدأ معاملتك",
+      "deal-title-placeholder": "عنوان المعاملة",
+      "role-label": "الدور",
+      "role-options": {
+        "item-1": "أشتري",
+        "item-2": "أبيع",
+        "item-3": "أتوسط"
+      },
+      "currency-label": "العملة",
+      "currency-options": {
+        "dz": "دينار جزائري",
+        "eu": "اليورو",
+        "uk": "الجنيه الإسترليني"
+      },
+      "examination-label": "مدة الفحص (يوم)",
+      "deal-details": {
+        "title": "تفاصيل المعاملة",
+        "item-name-placeholder": "اسم العنصر",
+        "price-label": "السعر (دج)",
+        "broker-price-label": "عمولة الوسيط",
+        "details-placeholder": "وصف العنصر"
+      },
+      "download-as-csv": "تحميل ملف CSV",
+      "add-item": "إضافة عنصر"
     }
+  },
+  "wallet": {
+    "heading": "محفضتي",
+    "new-deal-btn": "سحب الأموال",
+    "account-nbr": "الحساب رقم :",
+    "total": "المجموع :"
+  }
 }

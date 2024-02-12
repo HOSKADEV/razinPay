@@ -13,7 +13,7 @@ const ConsumerBenefitsPage = async ({
   return (
     <>
       <div className="space-y-4">
-        <h3 className="text-lg md:text-2xl lg:-text-4xl font-bold text-primary">
+        <h3 className="lg:-text-4xl text-lg font-bold text-primary md:text-2xl">
           {t("benefits.title")}
         </h3>
         <p className="font-semibold">{t("benefits.desc")}</p>

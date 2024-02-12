@@ -1,0 +1,10 @@
+{
+  "domains": {
+    "title": "domains",
+    "item-1": "foo",
+    "item-2": "bar",
+    "item-3": "far",
+    "item-4": "baf",
+    "item-5": "boo"
+  }
+}

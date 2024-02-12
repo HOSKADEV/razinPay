@@ -14,7 +14,7 @@ const LayoutHero = () => {
       {((pathname?.includes("/about") || pathname?.includes("/fr/about")) && (
         <>
           <Image src="/about.svg" alt="" width={1980} height={520} />
-          <h2 className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4 text-center text-xl md:text-3xl lg:text-7xl font-semibold text-white">
+          <h2 className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4 text-center text-xl font-semibold text-white md:text-3xl lg:text-7xl">
             {t("about.heading")}{" "}
             <span className="text-secondary">Razinpay</span>؟
           </h2>
@@ -29,7 +29,7 @@ const LayoutHero = () => {
               width={1980}
               height={520}
             />
-            <h2 className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4 text-center text-xl md:text-3xl lg:text-7xl font-semibold text-white">
+            <h2 className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4 text-center text-xl font-semibold text-white md:text-3xl lg:text-7xl">
               {t("consumers.heading")} <br />
               <span className="text-secondary">Razinpay</span>
             </h2>
@@ -39,7 +39,7 @@ const LayoutHero = () => {
           pathname?.includes("/fr/calculate-fees")) && (
           <>
             <Image src="/calculate-fees.svg" alt="" width={1980} height={520} />
-            <h2 className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4 text-center text-xl md:text-3xl lg:text-7xl font-semibold text-white">
+            <h2 className="absolute right-1/4 top-1/2 -translate-y-1/2 translate-x-1/4 text-center text-xl font-semibold text-white md:text-3xl lg:text-7xl">
               {t("calculate-fees.heading")}{" "}
               <span className="text-secondary">Razinpay</span>
             </h2>
@@ -48,44 +48,44 @@ const LayoutHero = () => {
         ((pathname?.includes("/brokers-services") ||
           pathname?.includes("/fr/brokers-services")) && (
           <div className=" bg-muted-foreground py-8">
-            <div className="flex flex-row-reverse items-center justify-around container">
-            <Image
-              src="/brokers-services.svg"
-              alt=""
-              width={541.79}
-              height={380}
-              className="hidden md:block"
-            />
-            <div className="space-y-6">
-              <h2 className="text-left text-3xl font-semibold text-primary rtl:text-right">
-                {t("brokers-services.heading.first")}{" "}
-                <span className="text-secondary">Razinpay</span> <br />
-                {t("brokers-services.heading.second")}
-              </h2>
-              <Trading />
-            </div>
+            <div className="container flex flex-row-reverse items-center justify-around">
+              <Image
+                src="/brokers-services.svg"
+                alt=""
+                width={541.79}
+                height={380}
+                className="hidden md:block"
+              />
+              <div className="space-y-6">
+                <h2 className="text-left text-3xl font-semibold text-primary rtl:text-right">
+                  {t("brokers-services.heading.first")}{" "}
+                  <span className="text-secondary">Razinpay</span> <br />
+                  {t("brokers-services.heading.second")}
+                </h2>
+                <Trading />
+              </div>
             </div>
           </div>
         )) ||
         ((pathname?.includes("/sellers-services") ||
           pathname?.includes("/fr/sellers-services")) && (
           <div className="bg-muted-foreground py-8">
-            <div className="flex flex-row-reverse items-center justify-around container">
-            <Image
-              src="/sellers-services.svg"
-              alt=""
-              width={541.79}
-              height={380}
-              className="hidden md:block"
-            />
-            <div className="space-y-6">
-              <h2 className="text-left text-3xl font-semibold text-primary rtl:text-right">
-                {t("sellers-services.heading.first")}{" "}
-                <span className="text-secondary">Razinpay</span> <br />
-                {t("sellers-services.heading.second")}
-              </h2>
-              <Trading />
-            </div>
+            <div className="container flex flex-row-reverse items-center justify-around">
+              <Image
+                src="/sellers-services.svg"
+                alt=""
+                width={541.79}
+                height={380}
+                className="hidden md:block"
+              />
+              <div className="space-y-6">
+                <h2 className="text-left text-3xl font-semibold text-primary rtl:text-right">
+                  {t("sellers-services.heading.first")}{" "}
+                  <span className="text-secondary">Razinpay</span> <br />
+                  {t("sellers-services.heading.second")}
+                </h2>
+                <Trading />
+              </div>
             </div>
           </div>
         ))}

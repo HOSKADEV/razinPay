@@ -14,9 +14,9 @@ import { siteConfig } from "@/config/site-config";
 import { useTranslation } from "react-i18next";
 
 export function MobileNav() {
-  const { t} = useTranslation("landing");
+  const { t } = useTranslation("landing");
   const [open, setOpen] = React.useState(false);
-  
+
   const navLinks = [
     {
       title: t("nav-bar.consumers.item-1"),

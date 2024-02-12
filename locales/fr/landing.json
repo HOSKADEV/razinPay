@@ -40,10 +40,10 @@
       "item-2": "Avantages de Razinpay",
       "item-3": "Contactez-nous"
     },
-    "user-menu":{
+    "user-menu": {
       "logout": "Déconnexion",
-      "profile":"Profil",
-      "wallet":"Ma portefeuille"
+      "profile": "Profil",
+      "wallet": "Ma portefeuille"
     },
     "login": "Connexion",
     "register": "S’inscrire",

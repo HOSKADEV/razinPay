@@ -60,9 +60,7 @@ export function SiteHeader() {
                 </Button>
               </>
             )}
-            {session.data && (
-              <UserButton/>
-            )}
+            {session.data && <UserButton />}
           </nav>
         </div>
       </div>

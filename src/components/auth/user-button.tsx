@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 export const UserButton = () => {
   const user = useCurrentUser();
   const { t } = useTranslation("landing");
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -31,13 +31,13 @@ export const UserButton = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="end">
         <Link href="/profile">
-        <DropdownMenuItem className="cursor-pointer">
-        {t("nav-bar.user-menu.profile")}
+          <DropdownMenuItem className="cursor-pointer">
+            {t("nav-bar.user-menu.profile")}
           </DropdownMenuItem>
         </Link>
         <Link href="/wallet">
-        <DropdownMenuItem className="cursor-pointer">
-        {t("nav-bar.user-menu.wallet")}
+          <DropdownMenuItem className="cursor-pointer">
+            {t("nav-bar.user-menu.wallet")}
           </DropdownMenuItem>
         </Link>
         <LogoutButton>

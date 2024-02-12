@@ -10,9 +10,7 @@ const OfferCard = async ({ locale }: { locale: string }) => {
       <div className="flex-col items-center space-y-6 rounded-lg bg-muted-foreground p-10 text-center">
         <p className="text-2xl font-bold text-primary">{t("card-title")}</p>
         <Button variant="outline" size="lg" asChild>
-          <Link href="/dashboard">
-            {t("action-button")}
-          </Link>
+          <Link href="/dashboard">{t("action-button")}</Link>
         </Button>
       </div>
       <div>

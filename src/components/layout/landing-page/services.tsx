@@ -104,10 +104,8 @@ const Services = async ({
         </div>
         <div className="flex justify-center">
           <Button asChild>
-          <Link href="/dashboard">
-          {t("services.action-button")}
-          </Link>
-        </Button>
+            <Link href="/dashboard">{t("services.action-button")}</Link>
+          </Button>
         </div>
       </div>
     </section>

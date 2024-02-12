@@ -1,23 +1,49 @@
 {
-    "home": {
-        "heading": "Mes transactions",
-        "new-deal-btn": "Ajouter une transaction",
-        "no-result": "Aucune transaction trouvée",
-        "search": "Rechercher",
-          
-        "table-header": {
-          "id": "Id",
-          "title": "Titre",
-          "date": "Date",
-          "price": "Prix",
-          "role": "Rôle",
-          "status": "Statut"
-        }
+  "home": {
+    "heading": "Mes transactions",
+    "new-deal-btn": "Ajouter une transaction",
+    "no-result": "Aucune transaction trouvée",
+    "search": "Rechercher",
+
+    "table-header": {
+      "id": "Id",
+      "title": "Titre",
+      "date": "Date",
+      "price": "Prix",
+      "role": "Rôle",
+      "status": "Statut"
     },
-    "wallet": {
-      "heading": "Ma portefeuille",
-      "new-deal-btn": "Nouvelle transaction",
-      "account-nbr": "Numéro de compte :",
-      "total": "Total :"
+    "new-deal": {
+      "heading": "Commencez votre transaction",
+      "deal-title-placeholder": "Titre de la transaction",
+      "role-label": "Rôle",
+      "role-options": {
+        "item-1": "Acheter",
+        "item-2": "Vendre",
+        "item-3": "Médiateur"
+      },
+      "currency-label": "Devise",
+      "currency-options": {
+        "dz": "Dinar algérien",
+        "eu": "Euro",
+        "uk": "British Pound"
+      },
+      "examination-label": "Période d'examen (jours)",
+      "deal-details": {
+        "title": "Détails de la transaction",
+        "item-name-placeholder": "Nom de l'article",
+        "price-label": "Prix (DZD)",
+        "broker-price-label": "عمولة الوسيط",
+        "details-placeholder": "Description de l'article"
+      },
+      "download-as-csv": "Télécharger au format CSV",
+      "add-item": "Ajouter un élément"
     }
+  },
+  "wallet": {
+    "heading": "Ma portefeuille",
+    "new-deal-btn": "Nouvelle transaction",
+    "account-nbr": "Numéro de compte :",
+    "total": "Total :"
+  }
 }

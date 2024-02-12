@@ -77,9 +77,7 @@ const Steps = async ({ params: { locale, i18nNamespaces } }: StepsParams) => {
       </div>
       <div>
         <Button asChild>
-          <Link href="/dashboard">
-          {t("steps.action-button")}
-          </Link>
+          <Link href="/dashboard">{t("steps.action-button")}</Link>
         </Button>
       </div>
     </section>

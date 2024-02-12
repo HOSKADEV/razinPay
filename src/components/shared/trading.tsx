@@ -62,9 +62,7 @@ const Trading = () => {
       </div>
       <div className="">
         <Button asChild className="mt-8" size="lg">
-          <Link href="/dashboard">
-          {t("action-button")}
-          </Link>
+          <Link href="/dashboard">{t("action-button")}</Link>
         </Button>
       </div>
     </>

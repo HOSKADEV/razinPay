@@ -40,10 +40,10 @@
       "item-2": "Razinpay إمتيازات",
       "item-3": "تواصل معنا"
     },
-    "user-menu":{
+    "user-menu": {
       "logout": "تسجيل الخروج",
-      "profile":"ملفي الشخصي",
-      "wallet":"محفضتي"
+      "profile": "ملفي الشخصي",
+      "wallet": "محفضتي"
     },
     "login": "تسجيل الدخول",
     "register": "إنشاء",

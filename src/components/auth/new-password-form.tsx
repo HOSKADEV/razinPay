@@ -53,7 +53,7 @@ export const NewPasswordForm = () => {
   };
 
   return (
-    <div >
+    <div>
       <h2 className="text-center text-4xl text-primary">
         {t("verification.heading")}
       </h2>
@@ -82,7 +82,7 @@ export const NewPasswordForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit" className="w-full">
-          {t("verification.reset-button")}
+            {t("verification.reset-button")}
           </Button>
         </form>
       </Form>
