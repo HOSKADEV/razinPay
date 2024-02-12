@@ -11,7 +11,7 @@ const BenefitsLayout = async ({ children, params }: BenefitsLayoutProps) => {
       <LayoutHero />
 
       <div className="container my-20 flex flex-row items-start justify-center ">
-        <div className="space-y-8 lg:w-2/3">{children}</div>
+        <div className="space-y-8 lg:w-2/3 ltr:pr-4 rtl:pl-4">{children}</div>
         <Faq locale={params.locale} />
       </div>
     </main>

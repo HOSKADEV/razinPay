@@ -1,23 +1,23 @@
 {
-  "heading": "إمتيازات Razinpay.com",
+  "heading": "Avantages de Razinpay.com",
   "item-1": {
-    "title": "حماية المشتري والبائع",
-    "desc": "يوفر طريقة دفع آمنة وموثوقة تحمي كل من المشتري والبائع في أي عملية عبر الإنترنت ."
+      "title": "Protection de l'acheteur et du vendeur",
+      "desc": "Offre un moyen de paiement sécurisé et fiable qui protège à la fois l'acheteur et le vendeur dans toute transaction en ligne."
   },
   "item-2": {
-    "title": "مناسب لمجموعة متنوعة من السلع والخدمات",
-    "desc": "يمكن للعملاء استخدام Razinpay.com لشراء وبيع مجموعة متنوعة من السلع والخدمات، بما في ذلك أجهزة و معدات، اعمال فنية، تقنيات، و خدمات اخرى ."
+      "title": "Adapté à une variété de biens et services",
+      "desc": "Les clients peuvent utiliser Razinpay.com pour acheter et vendre une variété de biens et de services, y compris des équipements, des œuvres d'art, des technologies et d'autres services."
   },
   "item-3": {
-    "title": "حماية المشتري ",
-    "desc": "يوفر Razinpay.com الحماية اللازمة للمشتري عند شراء سلعة ذات قيمة عالية عبر الإنترنت. لن يتم تحويل الأموال إلى البائع حتى يتلقى المشتري السلعة ويكون راضيًا عن الصفقة ."
+      "title": "Protection de l'acheteur",
+      "desc": "Razinpay.com offre la protection nécessaire à l'acheteur lors de l'achat d'un article de valeur élevée en ligne. Les fonds ne seront pas transférés au vendeur tant que l'acheteur n'aura pas reçu l'article et sera satisfait de la transaction."
   },
   "item-4": {
-    "title": "حماية البائع",
-    "desc": "يوفر Razinpay.com الحماية اللازمة للبائع عند بيع سلعة ذات قيمة عالية عبر الإنترنت. يتم التحقق من هوية المشتري والتحقق من التمويل خلال الصفقة. بعد تأمين الأموال، يتم إعلام البائع عندما يمكنه شحن السلعة إلى المشتري ."
+      "title": "Protection du vendeur",
+      "desc": "Razinpay.com offre la protection nécessaire au vendeur lors de la vente d'un article de valeur élevée en ligne. L'identité de l'acheteur est vérifiée et le financement est confirmé pendant la transaction. Une fois les fonds sécurisés, le vendeur est informé qu'il peut expédier l'article à l'acheteur."
   },
   "item-5": {
-    "title": "حماية الوسيط",
-    "desc": "إذا كنت وسيطًا، فيمكنك الاستمتاع بالحماية الكاملة من Rzinpay من خلال عملية الصفقة الثلاثية، حتى تتمكن من الثقة في أن رسوم الوسيط الخاصة بك مؤمنة ."
+      "title": "Protection de l'intermédiaire",
+      "desc": "Si vous êtes un intermédiaire, vous pouvez bénéficier d'une protection complète de Rzinpay grâce au processus de transaction triple, vous permettant d'avoir confiance que vos frais d'intermédiation sont sécurisés."
   }
 }
