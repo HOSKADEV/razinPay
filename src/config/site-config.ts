@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const siteConfig: Metadata = {
-  metadataBase: new URL("https://muswaddati.vercel.app"),
+  metadataBase: new URL("https://razinpay.com"),
   title: {
     default: "Razin Pay",
     template: "%s | Razin Pay",
@@ -10,28 +10,28 @@ export const siteConfig: Metadata = {
 
   applicationName: "Razin Pay",
 
-  creator: "Mohamed Lifa",
+  creator: "",
 
   authors: [
     {
-      name: "Mohamed Lifa",
-      url: "https://mohamed-lifa7.vercel.app",
+      name: "",
+      url: "",
     },
   ],
 
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 
   description:
-    "Muswaddati allows seamless team collaboration on documents in real-time through cloud-based workspaces.",
+    "",
 
   openGraph: {
-    title: "Muswaddati",
+    title: "",
     description:
-      "Muswaddati allows seamless team collaboration on documents in real-time through cloud-based workspaces.",
-    siteName: "Muswaddati",
+      "",
+    siteName: "Razin Pay",
     locale: "en_US",
-    url: new URL("https://muswaddati.vercel.app"),
-    images: ["https://muswaddati.vercel.app/og-image.png"],
+    url: new URL("https://razinpay.com"),
+    images: ["https://razinpay.com/og-image.png"],
     type: "website",
   },
 
@@ -49,8 +49,8 @@ export const siteConfig: Metadata = {
 
   twitter: {
     title: "Razin Pay",
-    creator: "@LifaSeddik",
+    creator: "@foobar",
     card: "summary_large_image",
-    images: ["https://muswaddati.vercel.app/twitter-og-image.png"],
+    images: ["https://razinpay.com/twitter-og-image.png"],
   },
 };

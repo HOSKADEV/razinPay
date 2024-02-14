@@ -27,58 +27,10 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { newItemSchema } from "@/schemas";
+import { downloadCSV } from "@/lib/utils";
 
-const newItemSchema = z.object({
-  title: z.string().min(2, {
-    message: "dealTitle must be at least 2 characters.",
-  }),
-  role: z.string({
-    required_error: "Please select an role to display.",
-  }),
-  currency: z.string({
-    required_error: "Please select an currency to display.",
-  }),
-  duration: z
-    .string({
-      required_error: "enter the the duration pls.",
-    })
-    .min(1, {
-      message: "durarion must be at least 1 days.",
-    }),
-  itemName: z
-    .string({
-      required_error: "item name is required.",
-    })
-    .min(2, {
-      message: "item name must be at least 2 characters.",
-    }),
-  price: z
-    .string({
-      required_error: "Price is required.",
-    })
-    .min(2, {
-      message: "Price must be at least 2 characters.",
-    }),
-  domain: z.string({
-    required_error: "Please select an domain to display.",
-  }),
-  brokerPrice: z
-    .string({
-      required_error: "Price is required.",
-    })
-    .min(2, {
-      message: "Price must be at least 2 characters.",
-    })
-    .optional(),
-  details: z
-    .string()
-    .min(10, {
-      message: "Details must be at least 10 characters.",
-    })
-    .max(300, {
-      message: "Details must not be longer than 300 characters.",
-    }),
-});
+
 const NewItemForm = () => {
   const { t } = useTranslation(["dashboard", "common"]);
   const [selectedRole, setSelectedRole] = useState("");
@@ -96,34 +48,16 @@ const NewItemForm = () => {
       details: "",
     },
   });
+  const headers = [
+    "title",
+    "role",
+    "currency",
+    "duration",
+    "itemName",
+    "price",
+  ];
 
-  const convertToCSV = (data: { [key: string]: string }) => {
-    const headers = [
-      "title",
-      "role",
-      "currency",
-      "duration",
-      "itemName",
-      "price",
-    ];
-    const rows = [headers.join(",")];
-
-    const rowData = headers.map((header) => data[header]);
-    rows.push(rowData.join(","));
-
-    return rows.join("\n");
-  };
-
-  const downloadCSV = (formData: z.infer<typeof newItemSchema>) => {
-    const csvData = convertToCSV(formData);
-    const blob = new Blob([csvData], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", `${formData.title.split(" ").join("_")}.csv`);
-    document.body.appendChild(link);
-    link.click();
-  };
+  
   function onSubmit(formData: z.infer<typeof newItemSchema>) {
     toast(
       <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -358,7 +292,7 @@ const NewItemForm = () => {
             type="button"
             variant="outline"
             onClick={() => {
-              downloadCSV(form.getValues());
+              downloadCSV(form.getValues(),headers);
             }}
           >
             {t("home.new-deal.download-as-csv")}

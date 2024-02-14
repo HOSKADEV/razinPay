@@ -3,7 +3,8 @@ import { UserRole } from "@prisma/client";
 
 export const SettingsSchema = z
   .object({
-    name: z.optional(z.string()),
+    firstName: z.optional(z.string()),
+    lastName: z.optional(z.string()),
     isTwoFactorEnabled: z.optional(z.boolean()),
     role: z.enum([UserRole.ADMIN, UserRole.USER]),
     email: z.optional(z.string().email()),
@@ -88,7 +89,56 @@ export const RegisterSchema = z.object({
         "Password must be at least 8 characters long. \ncontain at least one uppercase letter, one lowercase letter. \none special character",
     },
   ),
-  name: z.string().min(1, {
-    message: "Name is required",
+});
+
+export const newItemSchema = z.object({
+  title: z.string().min(2, {
+    message: "dealTitle must be at least 2 characters.",
   }),
+  role: z.string({
+    required_error: "Please select an role to display.",
+  }),
+  currency: z.string({
+    required_error: "Please select an currency to display.",
+  }),
+  duration: z
+    .string({
+      required_error: "enter the the duration pls.",
+    })
+    .min(1, {
+      message: "durarion must be at least 1 days.",
+    }),
+  itemName: z
+    .string({
+      required_error: "item name is required.",
+    })
+    .min(2, {
+      message: "item name must be at least 2 characters.",
+    }),
+  price: z
+    .string({
+      required_error: "Price is required.",
+    })
+    .min(2, {
+      message: "Price must be at least 2 characters.",
+    }),
+  domain: z.string({
+    required_error: "Please select an domain to display.",
+  }),
+  brokerPrice: z
+    .string({
+      required_error: "Price is required.",
+    })
+    .min(2, {
+      message: "Price must be at least 2 characters.",
+    })
+    .optional(),
+  details: z
+    .string()
+    .min(10, {
+      message: "Details must be at least 10 characters.",
+    })
+    .max(300, {
+      message: "Details must not be longer than 300 characters.",
+    }),
 });

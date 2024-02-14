@@ -9,9 +9,8 @@ import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 /**
  * Generates a two-factor authentication token for the specified email address.
  * @param {string} email - The email address for which to generate the token.
- * @returns {Promise<any>} - A promise that resolves with the generated token.
  */
-export const generateTwoFactorToken = async (email: string): Promise<any> => {
+export const generateTwoFactorToken = async (email: string) => {
   const token = crypto.randomInt(100_000, 1_000_000).toString();
   const expires = new Date(new Date().getTime() + 5 * 60 * 1000);
 
@@ -39,9 +38,8 @@ export const generateTwoFactorToken = async (email: string): Promise<any> => {
 /**
  * Generates a password reset token for the specified email address.
  * @param {string} email - The email address for which to generate the token.
- * @returns {Promise<any>} - A promise that resolves with the generated token.
  */
-export const generatePasswordResetToken = async (email: string): Promise<any> => {
+export const generatePasswordResetToken = async (email: string) => {
   const token = uuidv4();
   const expires = new Date(new Date().getTime() + 3600 * 1000);
 
@@ -67,9 +65,8 @@ export const generatePasswordResetToken = async (email: string): Promise<any> =>
 /**
  * Generates a verification token for the specified email address.
  * @param {string} email - The email address for which to generate the token.
- * @returns {Promise<any>} - A promise that resolves with the generated token.
  */
-export const generateVerificationToken = async (email: string): Promise<any> => {
+export const generateVerificationToken = async (email: string) => {
   const token = uuidv4();
   const expires = new Date(new Date().getTime() + 3600 * 1000);
 
