@@ -2,11 +2,16 @@ import crypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
 
 import { db } from "@/lib/db";
-import { getVerificationTokenByEmail } from "@/data/verificiation-token";
+import { getVerificationTokenByEmail } from "@/data/verification-token";
 import { getPasswordResetTokenByEmail } from "@/data/password-reset-token";
 import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 
-export const generateTwoFactorToken = async (email: string) => {
+/**
+ * Generates a two-factor authentication token for the specified email address.
+ * @param {string} email - The email address for which to generate the token.
+ * @returns {Promise<any>} - A promise that resolves with the generated token.
+ */
+export const generateTwoFactorToken = async (email: string): Promise<any> => {
   const token = crypto.randomInt(100_000, 1_000_000).toString();
   const expires = new Date(new Date().getTime() + 5 * 60 * 1000);
 
@@ -31,7 +36,12 @@ export const generateTwoFactorToken = async (email: string) => {
   return twoFactorToken;
 };
 
-export const generatePasswordResetToken = async (email: string) => {
+/**
+ * Generates a password reset token for the specified email address.
+ * @param {string} email - The email address for which to generate the token.
+ * @returns {Promise<any>} - A promise that resolves with the generated token.
+ */
+export const generatePasswordResetToken = async (email: string): Promise<any> => {
   const token = uuidv4();
   const expires = new Date(new Date().getTime() + 3600 * 1000);
 
@@ -54,7 +64,12 @@ export const generatePasswordResetToken = async (email: string) => {
   return passwordResetToken;
 };
 
-export const generateVerificationToken = async (email: string) => {
+/**
+ * Generates a verification token for the specified email address.
+ * @param {string} email - The email address for which to generate the token.
+ * @returns {Promise<any>} - A promise that resolves with the generated token.
+ */
+export const generateVerificationToken = async (email: string): Promise<any> => {
   const token = uuidv4();
   const expires = new Date(new Date().getTime() + 3600 * 1000);
 
@@ -68,7 +83,7 @@ export const generateVerificationToken = async (email: string) => {
     });
   }
 
-  const verficationToken = await db.verificationToken.create({
+  const verificationToken = await db.verificationToken.create({
     data: {
       email,
       token,
@@ -76,5 +91,5 @@ export const generateVerificationToken = async (email: string) => {
     },
   });
 
-  return verficationToken;
+  return verificationToken;
 };
