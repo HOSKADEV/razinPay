@@ -19,6 +19,7 @@ model User {
   lastName      String?
   phone         String?
   country       String?
+  birthDay      DateTime?
   email         String?   @unique
   address       String?
   emailVerified DateTime?

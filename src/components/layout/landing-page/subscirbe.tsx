@@ -22,7 +22,7 @@ const Subscribe = async ({
         </h2>
         <Separator />
         <form className="flex items-center space-x-4 rtl:space-x-reverse">
-          <div className="flex h-9 w-full items-center px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1">
+          <div className="flex h-9 w-full items-center px-3 py-1 text-sm transition-colors placeholder:text-gray-600 focus-visible:outline-none focus-visible:ring-1">
             <div className="relative w-full">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <Mail className="h-5 w-5 text-gray-500" />

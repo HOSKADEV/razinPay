@@ -60,14 +60,20 @@ export const {
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
       }
-
+      
       if (session.user) {
         session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
       }
-
+      
       if (session.user) {
         session.user.firstName = token.firstName;
         session.user.lastName = token.lastName;
+        session.user.country = token.country,
+        session.user.phone = token.phone,
+        session.user.address = token.address, 
+        session.user.birthDay = token.birthDay, 
+
+        session.user.name = token.name,
         session.user.email = token.email;
         session.user.isOAuth = token.isOAuth as boolean;
       }
@@ -86,6 +92,10 @@ export const {
       token.isOAuth = !!existingAccount;
       token.firstName = existingUser.firstName;
       token.lastName = existingUser.lastName;
+      token.country = existingUser.country,
+      token.phone = existingUser.phone,
+      token.address = existingUser.address, 
+      token.birthDay = existingUser.birthDay, 
       token.email = existingUser.email;
       token.role = existingUser.role;
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;

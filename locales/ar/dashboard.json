@@ -36,7 +36,41 @@
         "details-placeholder": "وصف العنصر"
       },
       "download-as-csv": "تحميل ملف CSV",
-      "add-item": "إضافة عنصر"
+      "add-item": "إضافة عنصر",
+      "deal-summary":{
+        "heading":"ملخص المعاملات",
+        "sub-total":"المجموع الفرعي:",
+        "razin-fees":"رسوم Razinpay  من العملية",
+        "consumer-price":"سعر المشتري:",
+        "seller-revenue":"عائدات البائع:",
+        "hint":"قد يتم تطبيق بعض الرسوم",
+        "consumer-details":"تفاصيل المشتري",
+        "email-placeholder":"البريد الإلكتروني",
+        "phone-placeholder":"رقم الهاتف",
+        "start-deal":"ابدأ المعاملة",
+        "terms-privacy": {
+          "text1": "بإجرائك العملية انت توافق على",
+          "link1": "شروط استخدام منصة Razinpay.com",
+          "text2": "و",
+          "link2": "سياسة الخصوصية"
+        }
+        
+      }
+    }
+  },
+  "profile":{
+    "heading": "معلومات الحساب",
+    "form":{
+        "firstname-placeholder": "الاسم",
+        "lastname-placeholder": "اللقب",
+        "email-placeholder": "البريد الإلكتروني",
+        "phone-placeholder": "رقم الهاتف",
+        "country-placeholder": "الدولة",
+        "birthday-placeholder":"إختر تاريخ الميلاد",
+        "address-placeholder": "العنوان",
+        "action-button":"حفظ",
+        "success-message":"تم حفظ تغييرات الملف الشخصي بنجاح!",
+        "error-message":"حدث خطأ. يرجى المحاولة مرة أخرى."
     }
   },
   "wallet": {

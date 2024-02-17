@@ -60,5 +60,8 @@ body,
   }
   body {
     @apply bg-background text-foreground;
+    .PhoneInputInput{
+      @apply flex h-9 w-full rounded-md border-none bg-transparent px-3 text-sm transition-colors placeholder:text-gray-600 focus-visible:outline-none focus-visible:border-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50
+    }
   }
 }

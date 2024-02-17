@@ -6,5 +6,8 @@
     "item-3": "far",
     "item-4": "baf",
     "item-5": "boo"
+  },
+  "country":{
+      "algeria": "Algérie"  
   }
 }

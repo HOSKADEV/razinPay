@@ -33,13 +33,46 @@
         "title": "Détails de la transaction",
         "item-name-placeholder": "Nom de l'article",
         "price-label": "Prix (DZD)",
-        "broker-price-label": "عمولة الوسيط",
+        "broker-price-label": "Commission du courtier",
         "details-placeholder": "Description de l'article"
       },
       "download-as-csv": "Télécharger au format CSV",
-      "add-item": "Ajouter un élément"
+      "add-item": "Ajouter un élément",
+      "deal-summary": {
+        "heading": "Résumé de la transaction",
+        "sub-total": "Sous-total :",
+        "razin-fees": "Frais Razinpay de la transaction",
+        "consumer-price": "Prix du consommateur :",
+        "seller-revenue": "Revenu du vendeur :",
+        "hint": "Certains frais peuvent s'appliquer",
+        "consumer-details": "Détails du consommateur",
+        "email-placeholder": "E-mail",
+        "phone-placeholder": "Numéro de téléphone",
+        "start-deal": "Commencer la transaction",
+        "terms-privacy": {
+          "text1": "En effectuant la transaction, vous acceptez les",
+          "link1": "Conditions d'utilisation de la plateforme Razinpay.com",
+          "text2": "et la",
+          "link2": "Politique de confidentialité"
+          }
+        }
     }
   },
+  "profile":{
+    "heading": "Informations du profil",
+    "form":{
+        "firstname-placeholder": "Prénom",
+        "lastname-placeholder": "Nom de famille",
+        "email-placeholder": "E-mail",
+        "phone-placeholder": "Numéro de téléphone",
+        "country-placeholder": "Pays",
+        "birthday-placeholder":"Choisissez une date de naissance",
+        "address-placeholder": "Adresse",
+        "action-button": "Enregistrer",
+        "success-message":"Modifications de profil enregistrées avec succès !",
+        "error-message":"Une erreur s'est produite. Veuillez réessayer."
+    }
+},
   "wallet": {
     "heading": "Ma portefeuille",
     "new-deal-btn": "Nouvelle transaction",

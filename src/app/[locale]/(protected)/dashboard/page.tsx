@@ -33,7 +33,7 @@ const UserDashboardPage = async ({
   const { t } = await initTranslations(locale, i18nNamespaces);
   const data = await getData();
   return (
-    <div className="container">
+    <div className="px-3 py-8 md:container">
       <div className="flex items-center justify-between py-8">
         <h2 className="text-xl font-bold text-primary">{t("home.heading")}</h2>
         <Button variant="secondary" asChild>
