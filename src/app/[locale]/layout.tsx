@@ -54,7 +54,7 @@ export default async function RootLayout({
       >
         <html lang={locale} dir={dir(locale)}>
           <body className={almarai.className}>
-            <Toaster />
+            <Toaster richColors/>
             <SiteHeader />
             {children}
             <SiteFooter />

@@ -9,5 +9,10 @@
   },
   "country":{
       "algeria": "Algérie"  
+  },
+  "currency":{
+      "dz": "DZD",
+      "eu": "€",
+      "uk": "£"  
   }
 }

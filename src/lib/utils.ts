@@ -23,7 +23,7 @@ export const downloadCSV = (formData: z.infer<typeof newItemSchema>, headers: st
   const url = window.URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.setAttribute("download", `${formData.title.split(" ").join("_")}.csv`);
+  link.setAttribute("download", `${formData.name.split(" ").join("_")}.csv`);
   document.body.appendChild(link);
   link.click();
 };

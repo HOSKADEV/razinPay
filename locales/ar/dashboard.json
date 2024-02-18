@@ -41,10 +41,12 @@
         "heading":"ملخص المعاملات",
         "sub-total":"المجموع الفرعي:",
         "razin-fees":"رسوم Razinpay  من العملية",
-        "consumer-price":"سعر المشتري:",
-        "seller-revenue":"عائدات البائع:",
+        "customer-price":"سعر المشتري",
+        "seller-revenue":"عائدات البائع",
         "hint":"قد يتم تطبيق بعض الرسوم",
-        "consumer-details":"تفاصيل المشتري",
+        "other-dealer-details":"تفاصيل",
+        "seller": "البائع",
+        "customer": "المشتري",
         "email-placeholder":"البريد الإلكتروني",
         "phone-placeholder":"رقم الهاتف",
         "start-deal":"ابدأ المعاملة",
@@ -53,8 +55,9 @@
           "link1": "شروط استخدام منصة Razinpay.com",
           "text2": "و",
           "link2": "سياسة الخصوصية"
-        }
-        
+        },
+        "success-message":"تم إضافة المعاملة بنجاح!",
+        "error-message":"حدث خطأ. يرجى المحاولة مرة أخرى."
       }
     }
   },

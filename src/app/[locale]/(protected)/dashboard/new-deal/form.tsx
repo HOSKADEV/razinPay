@@ -1,5 +1,8 @@
 "use client";
 
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -25,31 +28,47 @@ import {
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import { newItemSchema } from "@/schemas";
+import { useState, useTransition } from "react";
+import { confirmationSchema, newItemSchema } from "@/schemas";
 import { downloadCSV } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import { createDeal } from '@/actions/deal';
 
 const NewItemForm = () => {
+  const feesPercentage = 0.1;
   const { t } = useTranslation(["dashboard", "common"]);
   const [showDealSummary, setShowDealSummary] = useState(false);
-  const form = useForm<z.infer<typeof newItemSchema>>({
+  const [formValues, setFormValues] = useState(
+    {} as z.infer<typeof newItemSchema>,
+  );
+  const [subPrice, setSubPrice] = useState(0);
+  const [isPending, startTransition] = useTransition();
+
+  const formMethods = useForm<z.infer<typeof newItemSchema>>({
     resolver: zodResolver(newItemSchema),
     defaultValues: {
-      title: "",
+      name: "",
       role: "",
       currency: "",
       duration: "1",
       itemName: "",
       domain: "",
       price: "1",
-      details: "",
+      description: "",
+    },
+  });
+
+  const confirmationForm = useForm<z.infer<typeof confirmationSchema>>({
+    resolver: zodResolver(confirmationSchema),
+    defaultValues: {
+      party2Email: "",
+      party2Phone: "",
     },
   });
 
   const headers = [
-    "title",
+    "name",
     "role",
     "currency",
     "duration",
@@ -58,27 +77,53 @@ const NewItemForm = () => {
   ];
 
   function onSubmit(formData: z.infer<typeof newItemSchema>) {
+    setShowDealSummary(true);
     toast(
       <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
         <code className="text-white">{JSON.stringify(formData, null, 2)}</code>
       </pre>,
     );
-    setShowDealSummary(true);
+    setSubPrice(Number(formData.price));
+    setFormValues(formData);
+  }
+
+  function onSecondarySubmit(
+    secondaryFormData: z.infer<typeof confirmationSchema>,
+  ) {
+    startTransition(() => {
+      createDeal({...formValues, ...secondaryFormData})
+        .then((data) => {
+          if (data.error) {
+            toast.error(t("home.new-deal.deal-summary.error-message"),{icon:'🚨'})
+          }
+
+          if (data.success) {
+            toast.success(t("home.new-deal.deal-summary.success-message"),{icon:'🎉'});
+          }
+        })
+        .catch(() => toast.error(t("home.new-deal.deal-summary.error-message"),{icon:'🚨'}));
+    });
+    console.log({ ...formValues, ...secondaryFormData });
   }
   return (
     <div className="space-y-6">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <Form {...formMethods} >
+        <form
+          onSubmit={formMethods.handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
           <FormField
-            control={form.control}
-            name="title"
+            control={formMethods.control}
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder={t("home.new-deal.deal-title-placeholder")}
                     {...field}
+                    placeholder={t("home.new-deal.deal-title-placeholder")}
                     className="placeholder:text-gray-500"
+                    disabled={showDealSummary}
+                    aria-disabled={showDealSummary}
                   />
                 </FormControl>
                 <FormMessage />
@@ -87,7 +132,7 @@ const NewItemForm = () => {
           />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             <FormField
-              control={form.control}
+              control={formMethods.control}
               name="role"
               render={({ field }) => (
                 <FormItem>
@@ -97,6 +142,8 @@ const NewItemForm = () => {
                       field.onChange(value);
                     }}
                     defaultValue={field.value}
+                    disabled={showDealSummary}
+                    aria-disabled={showDealSummary}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -112,9 +159,6 @@ const NewItemForm = () => {
                       <SelectItem value="seller">
                         {t("home.new-deal.role-options.item-2")}
                       </SelectItem>
-                      <SelectItem value="broker">
-                        {t("home.new-deal.role-options.item-3")}
-                      </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -122,7 +166,7 @@ const NewItemForm = () => {
               )}
             />
             <FormField
-              control={form.control}
+              control={formMethods.control}
               name="currency"
               render={({ field }) => (
                 <FormItem>
@@ -130,6 +174,8 @@ const NewItemForm = () => {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
+                    disabled={showDealSummary}
+                    aria-disabled={showDealSummary}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -155,17 +201,19 @@ const NewItemForm = () => {
               )}
             />
             <FormField
-              control={form.control}
+              control={formMethods.control}
               name="duration"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t("home.new-deal.examination-label")}</FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
                       placeholder={t("1")}
                       type="number"
-                      {...field}
                       className="placeholder:text-gray-500"
+                    disabled={showDealSummary}
+                    aria-disabled={showDealSummary}
                     />
                   </FormControl>
                   <FormMessage />
@@ -179,17 +227,19 @@ const NewItemForm = () => {
             </h3>
             <div className="grid grid-cols-2 items-end gap-6">
               <FormField
-                control={form.control}
+                control={formMethods.control}
                 name="itemName"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <Input
+                          {...field}
                         placeholder={t(
                           "home.new-deal.deal-details.item-name-placeholder",
                         )}
-                        {...field}
                         className="placeholder:text-gray-500"
+                    disabled={showDealSummary}
+                    aria-disabled={showDealSummary}
                       />
                     </FormControl>
                     <FormMessage />
@@ -197,7 +247,7 @@ const NewItemForm = () => {
                 )}
               />
               <FormField
-                control={form.control}
+                control={formMethods.control}
                 name="price"
                 render={({ field }) => (
                   <FormItem>
@@ -206,11 +256,14 @@ const NewItemForm = () => {
                     </FormLabel>
                     <FormControl>
                       <Input
+                        {...field}
+                        type="number"
                         placeholder={t(
                           "home.new-deal.deal-details.price-label",
                         )}
-                        {...field}
                         className="placeholder:text-gray-500"
+                        disabled={showDealSummary}
+                        aria-disabled={showDealSummary}
                       />
                     </FormControl>
                     <FormMessage />
@@ -219,13 +272,15 @@ const NewItemForm = () => {
               />
             </div>
             <FormField
-              control={form.control}
+              control={formMethods.control}
               name="domain"
               render={({ field }) => (
                 <FormItem>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
+                    disabled={showDealSummary}
+                    aria-disabled={showDealSummary}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -249,18 +304,20 @@ const NewItemForm = () => {
               )}
             />
             <FormField
-              control={form.control}
-              name="details"
+              control={formMethods.control}
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Textarea
+                        {...field}
                       placeholder={t(
                         "home.new-deal.deal-details.details-placeholder",
                       )}
                       className="resize-none placeholder:text-gray-500"
                       rows={5}
-                      {...field}
+                      disabled={showDealSummary}
+                      aria-disabled={showDealSummary}
                     />
                   </FormControl>
                   <FormMessage />
@@ -273,14 +330,24 @@ const NewItemForm = () => {
               type="button"
               variant="outline"
               onClick={() => {
-                downloadCSV(form.getValues(), headers);
+                downloadCSV(formMethods.getValues(), headers);
               }}
             >
               {t("home.new-deal.download-as-csv")}
             </Button>
-            <Button type="button" onClick={()=>{setShowDealSummary(true);}} disabled={showDealSummary}>{t("home.new-deal.add-item")}</Button>
+            <Button type="submit" disabled={showDealSummary}
+            aria-disabled={showDealSummary}>
+              {t("home.new-deal.add-item")}
+            </Button>
           </div>
-          {showDealSummary && (
+        </form>
+      </Form>
+      {showDealSummary && (
+        <Form {...confirmationForm}>
+          <form
+            onSubmit={confirmationForm.handleSubmit(onSecondarySubmit)}
+            className="space-y-8"
+          >
             <div className="space-y-6">
               <h3 className="text-xl font-bold">
                 {t("home.new-deal.deal-summary.heading")}
@@ -288,43 +355,43 @@ const NewItemForm = () => {
               <div className="space-y-2">
                 <p className="flex items-center justify-between">
                   <span>{t("home.new-deal.deal-summary.sub-total")}</span>
-                  <span>10000</span>
+                  <span>{subPrice.toString()+ " "+t(`common:currency.${formValues.currency}`)}</span>
                 </p>
                 <p className="flex items-center justify-between text-primary">
                   <span>{t("home.new-deal.deal-summary.razin-fees")}</span>
-                  <span>10000</span>
+                  <span>{(subPrice * feesPercentage).toString()+ " "+t(`common:currency.${formValues.currency}`)}</span>
                 </p>
               </div>
               <Separator />
               <div className="space-y-2">
                 <p className="flex items-center justify-between">
-                  <span>{t("home.new-deal.deal-summary.consumer-price")}</span>
-                  <span>10000</span>
+                  <span>{t("home.new-deal.deal-summary.customer-price")}</span>
+                  <span>{(subPrice + (subPrice * feesPercentage)/2).toString()+ " "+t(`common:currency.${formValues.currency}`)}</span>
                 </p>
                 <p className="flex items-center justify-between text-primary">
                   <span>{t("home.new-deal.deal-summary.seller-revenue")}</span>
-                  <span>10000</span>
+                  <span>{(subPrice - subPrice * feesPercentage/2).toString() + " "+t(`common:currency.${formValues.currency}`)}</span>
                 </p>
               </div>
               <p className="text-center font-semibold">
                 {t("home.new-deal.deal-summary.hint")}
               </p>
               <h3 className="text-xl font-bold">
-                {t("home.new-deal.deal-summary.consumer-details")}
+                {t("home.new-deal.deal-summary.other-dealer-details") +" "+ t(`home.new-deal.deal-summary.${formValues.role==='consumer'?'seller':'customer'}`)} 
               </h3>
               <div className="space-y-8">
                 <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
                   <FormField
-                    control={form.control}
-                    name="consumerEmail"
+                    control={confirmationForm.control}
+                    name="party2Email"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
                           <Input
+                            {...field}
                             placeholder={t(
                               "home.new-deal.deal-summary.email-placeholder",
                             )}
-                            {...field}
                             className="placeholder:text-gray-500"
                             type="email"
                           />
@@ -334,19 +401,18 @@ const NewItemForm = () => {
                     )}
                   />
                   <FormField
-                    control={form.control}
-                    name="consumerPhone"
+                    control={confirmationForm.control}
+                    name="party2Phone"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input
-                            placeholder={t(
-                              "home.new-deal.deal-summary.phone-placeholder",
-                            )}
+                          <PhoneInput
                             {...field}
-                            className="placeholder:text-gray-500"
-                            type="tel"
+                            className='rounded-md border border-input h-9 bg-transparent focus-visible:outline-none focus-visible:ring-1 focus:border-primary px-3'
+                            defaultCountry="DZ"
+                            placeholder={t("home.new-deal.deal-summary.phone-placeholder")}
                           />
+
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -381,9 +447,9 @@ const NewItemForm = () => {
                 </p>
               </div>
             </div>
-          )}
-        </form>
-      </Form>
+          </form>
+        </Form>
+      )}
     </div>
   );
 };

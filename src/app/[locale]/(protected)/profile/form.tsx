@@ -182,10 +182,11 @@ export const ProfileForm = () => {
               <FormItem>
                 <FormControl>
                   <PhoneInput
+                        {...field}
                         className='rounded-md border border-input h-9 bg-transparent focus-visible:outline-none focus-visible:ring-1 focus:border-primary px-3'
                         defaultCountry="DZ"
                         placeholder={t("profile.form.phone-placeholder")}
-                        {...field}/>
+                        />
                 </FormControl>
 
                 <FormMessage />

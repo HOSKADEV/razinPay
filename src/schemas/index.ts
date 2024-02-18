@@ -92,7 +92,7 @@ export const RegisterSchema = z.object({
 });
 
 export const newItemSchema = z.object({
-  title: z.string().min(2, {
+  name: z.string().min(2, {
     message: "dealTitle must be at least 2 characters.",
   }),
   role: z.string({
@@ -125,23 +125,23 @@ export const newItemSchema = z.object({
   domain: z.string({
     required_error: "Please select an domain to display.",
   }),
-  details: z
+  description: z
     .string()
     .min(10, {
-      message: "Details must be at least 10 characters.",
+      message: "description must be at least 10 characters.",
     })
     .max(300, {
-      message: "Details must not be longer than 300 characters.",
-    }),
-    consumerEmail: z.string().email({
-      message: "Email is required",
-    }),
-    consumerPhone: z.string().min(1, {
-      message: "Phone number is required",
+      message: "description must not be longer than 300 characters.",
     }),
 });
 
 export const confirmationSchema = z.object({
+  party2Email: z.string().email({
+    message: "Email is required",
+  }),
+  party2Phone: z.string().min(1, {
+    message: "Phone number is required",
+  }),
 });
 
 export const profileFormSchema = z.object({
