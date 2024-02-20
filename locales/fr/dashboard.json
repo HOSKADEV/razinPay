@@ -60,7 +60,56 @@
           "link2": "Politique de confidentialité"
           }
         }
-    }
+      },
+      "start-deal":{
+        "deal-id":"Numéro de transaction :",
+        "roles":{
+          "seller":{
+            "one":"Vendre",
+            "two":"À"
+          },
+          "consumer":{
+            "one":"Acheter",
+            "two":"De"
+          }
+        },
+        "duration":"La durée d'inspection pour cette transaction est de ",
+        "days":"jour(s)",
+        "item-details":{
+          "heading":"Détails de l'article",
+          "item-name":"Nom de l'article",
+          "description":"Description de l'article",
+          "sub-total":"Sous-total",
+          "razin-fees":"Frais Razinpay",
+          "total":"Total"
+        },
+        "step-1":{
+          "name":"Accord",
+          "hint":"Veuillez appuyer sur le bouton et suivre les instructions pour compléter toutes les étapes de la transaction.",
+          "confirm-btn":"Confirmer"
+        },
+        "step-2":{
+          "name":"Paiement",
+          "hint":"Veuillez appuyer sur le bouton et suivre les instructions pour effectuer le paiement de la transaction.",
+          "confirm-btn":"Effectuer le paiement"
+        },
+        "step-3":{
+          "name":"Transfert de l'article",
+          "hint":"Veuillez appuyer sur le bouton et suivre les instructions pour transférer les articles de la transaction.",
+          "confirm-btn":"Transféré"
+        },
+        "step-4":{
+          "name":"Inspection",
+          "hint":"Veuillez appuyer sur le bouton et suivre les instructions pour inspecter l'article avant de finaliser la transaction.",
+          "confirm-btn":"Transaction terminée",
+          "error-btn":"Article non valide"
+        },
+        "step-5":{
+          "name":"Fermeture",
+          "hint":"Vous avez fait du bon travail! Veuillez fermer la transaction une fois que vous avez vérifié toutes les étapes.",
+          "confirm-btn":"Fermer la transaction"
+        }
+      }
   },
   "profile":{
     "heading": "Informations du profil",

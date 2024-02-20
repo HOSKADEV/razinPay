@@ -1,7 +1,7 @@
 "use client";
 
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,10 +33,12 @@ import { confirmationSchema, newItemSchema } from "@/schemas";
 import { downloadCSV } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { createDeal } from '@/actions/deal';
+import { createDeal } from "@/actions/deal";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const NewItemForm = () => {
   const feesPercentage = 0.1;
+  const router = useRouter();
   const { t } = useTranslation(["dashboard", "common"]);
   const [showDealSummary, setShowDealSummary] = useState(false);
   const [formValues, setFormValues] = useState(
@@ -44,17 +46,19 @@ const NewItemForm = () => {
   );
   const [subPrice, setSubPrice] = useState(0);
   const [isPending, startTransition] = useTransition();
+  const params = useSearchParams();
+  const searchParams = new URLSearchParams(params);
 
   const formMethods = useForm<z.infer<typeof newItemSchema>>({
     resolver: zodResolver(newItemSchema),
     defaultValues: {
       name: "",
-      role: "",
-      currency: "",
+      role: searchParams.get("role") || "",
+      currency: searchParams.get("currency") || "",
       duration: "1",
       itemName: "",
-      domain: "",
-      price: "1",
+      domain: searchParams.get("domain") || "",
+      price: searchParams.get("amount") || "",
       description: "",
     },
   });
@@ -67,14 +71,7 @@ const NewItemForm = () => {
     },
   });
 
-  const headers = [
-    "name",
-    "role",
-    "currency",
-    "duration",
-    "itemName",
-    "price",
-  ];
+  const headers = ["name", "role", "currency", "duration", "itemName", "price"];
 
   function onSubmit(formData: z.infer<typeof newItemSchema>) {
     setShowDealSummary(true);
@@ -91,23 +88,31 @@ const NewItemForm = () => {
     secondaryFormData: z.infer<typeof confirmationSchema>,
   ) {
     startTransition(() => {
-      createDeal({...formValues, ...secondaryFormData})
+      createDeal({ ...formValues, ...secondaryFormData })
         .then((data) => {
           if (data.error) {
-            toast.error(t("home.new-deal.deal-summary.error-message"),{icon:'🚨'})
+            toast.error(t("home.new-deal.deal-summary.error-message"), {
+              icon: "🚨",
+            });
           }
 
           if (data.success) {
-            toast.success(t("home.new-deal.deal-summary.success-message"),{icon:'🎉'});
+            toast.success(t("home.new-deal.deal-summary.success-message"), {
+              icon: "🎉",
+            });
           }
+          router.push(`/dashboard/new-deal/${data.id}`);
         })
-        .catch(() => toast.error(t("home.new-deal.deal-summary.error-message"),{icon:'🚨'}));
+        .catch(() =>
+          toast.error(t("home.new-deal.deal-summary.error-message"), {
+            icon: "🚨",
+          }),
+        );
     });
-    console.log({ ...formValues, ...secondaryFormData });
   }
   return (
     <div className="space-y-6">
-      <Form {...formMethods} >
+      <Form {...formMethods}>
         <form
           onSubmit={formMethods.handleSubmit(onSubmit)}
           className="space-y-8"
@@ -122,8 +127,8 @@ const NewItemForm = () => {
                     {...field}
                     placeholder={t("home.new-deal.deal-title-placeholder")}
                     className="placeholder:text-gray-500"
-                    disabled={showDealSummary}
-                    aria-disabled={showDealSummary}
+                    disabled={showDealSummary || isPending}
+                    aria-disabled={showDealSummary || isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -142,8 +147,8 @@ const NewItemForm = () => {
                       field.onChange(value);
                     }}
                     defaultValue={field.value}
-                    disabled={showDealSummary}
-                    aria-disabled={showDealSummary}
+                    disabled={showDealSummary || isPending}
+                    aria-disabled={showDealSummary || isPending}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -153,7 +158,7 @@ const NewItemForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="consumer">
+                      <SelectItem value="buyer">
                         {t("home.new-deal.role-options.item-1")}
                       </SelectItem>
                       <SelectItem value="seller">
@@ -174,8 +179,8 @@ const NewItemForm = () => {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    disabled={showDealSummary}
-                    aria-disabled={showDealSummary}
+                    disabled={showDealSummary || isPending}
+                    aria-disabled={showDealSummary || isPending}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -185,13 +190,13 @@ const NewItemForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="dz">
+                      <SelectItem value="dzd">
                         {t("home.new-deal.currency-options.dz")}
                       </SelectItem>
-                      <SelectItem value="eu">
+                      <SelectItem value="eur">
                         {t("home.new-deal.currency-options.eu")}
                       </SelectItem>
-                      <SelectItem value="uk">
+                      <SelectItem value="gbp">
                         {t("home.new-deal.currency-options.uk")}
                       </SelectItem>
                     </SelectContent>
@@ -212,8 +217,8 @@ const NewItemForm = () => {
                       placeholder={t("1")}
                       type="number"
                       className="placeholder:text-gray-500"
-                    disabled={showDealSummary}
-                    aria-disabled={showDealSummary}
+                      disabled={showDealSummary || isPending}
+                      aria-disabled={showDealSummary || isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -233,13 +238,13 @@ const NewItemForm = () => {
                   <FormItem>
                     <FormControl>
                       <Input
-                          {...field}
+                        {...field}
                         placeholder={t(
                           "home.new-deal.deal-details.item-name-placeholder",
                         )}
                         className="placeholder:text-gray-500"
-                    disabled={showDealSummary}
-                    aria-disabled={showDealSummary}
+                        disabled={showDealSummary || isPending}
+                        aria-disabled={showDealSummary || isPending}
                       />
                     </FormControl>
                     <FormMessage />
@@ -262,8 +267,8 @@ const NewItemForm = () => {
                           "home.new-deal.deal-details.price-label",
                         )}
                         className="placeholder:text-gray-500"
-                        disabled={showDealSummary}
-                        aria-disabled={showDealSummary}
+                        disabled={showDealSummary || isPending}
+                        aria-disabled={showDealSummary || isPending}
                       />
                     </FormControl>
                     <FormMessage />
@@ -279,8 +284,8 @@ const NewItemForm = () => {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    disabled={showDealSummary}
-                    aria-disabled={showDealSummary}
+                    disabled={showDealSummary || isPending}
+                    aria-disabled={showDealSummary || isPending}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -288,15 +293,21 @@ const NewItemForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="consumer">
-                        {t("common:domains.item-1")}
-                      </SelectItem>
-                      <SelectItem value="seller">
-                        {t("common:domains.item-2")}
-                      </SelectItem>
-                      <SelectItem value="broker">
-                        {t("common:domains.item-3")}
-                      </SelectItem>
+                    <SelectItem value="apps">
+                            {t("common:domains.item-1")}
+                          </SelectItem>
+                          <SelectItem value="cars_trucks">
+                            {t("common:domains.item-2")}
+                          </SelectItem>
+                          <SelectItem value="motor_sycles">
+                            {t("common:domains.item-3")}
+                          </SelectItem>
+                          <SelectItem value="properties">
+                            {t("common:domains.item-4")}
+                          </SelectItem>
+                          <SelectItem value="video_games">
+                            {t("common:domains.item-5")}
+                          </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -310,14 +321,14 @@ const NewItemForm = () => {
                 <FormItem>
                   <FormControl>
                     <Textarea
-                        {...field}
+                      {...field}
                       placeholder={t(
                         "home.new-deal.deal-details.details-placeholder",
                       )}
                       className="resize-none placeholder:text-gray-500"
                       rows={5}
-                      disabled={showDealSummary}
-                      aria-disabled={showDealSummary}
+                      disabled={showDealSummary || isPending}
+                      aria-disabled={showDealSummary || isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -335,8 +346,11 @@ const NewItemForm = () => {
             >
               {t("home.new-deal.download-as-csv")}
             </Button>
-            <Button type="submit" disabled={showDealSummary}
-            aria-disabled={showDealSummary}>
+            <Button
+              type="submit"
+              disabled={showDealSummary || isPending}
+              aria-disabled={showDealSummary || isPending}
+            >
               {t("home.new-deal.add-item")}
             </Button>
           </div>
@@ -355,29 +369,49 @@ const NewItemForm = () => {
               <div className="space-y-2">
                 <p className="flex items-center justify-between">
                   <span>{t("home.new-deal.deal-summary.sub-total")}</span>
-                  <span>{subPrice.toString()+ " "+t(`common:currency.${formValues.currency}`)}</span>
+                  <span>
+                    {subPrice.toString() +
+                      " " +
+                      t(`common:currency.${formValues.currency}`)}
+                  </span>
                 </p>
                 <p className="flex items-center justify-between text-primary">
                   <span>{t("home.new-deal.deal-summary.razin-fees")}</span>
-                  <span>{(subPrice * feesPercentage).toString()+ " "+t(`common:currency.${formValues.currency}`)}</span>
+                  <span>
+                    {(subPrice * feesPercentage).toString() +
+                      " " +
+                      t(`common:currency.${formValues.currency}`)}
+                  </span>
                 </p>
               </div>
               <Separator />
               <div className="space-y-2">
                 <p className="flex items-center justify-between">
                   <span>{t("home.new-deal.deal-summary.customer-price")}</span>
-                  <span>{(subPrice + (subPrice * feesPercentage)/2).toString()+ " "+t(`common:currency.${formValues.currency}`)}</span>
+                  <span>
+                    {(subPrice + (subPrice * feesPercentage) / 2).toString() +
+                      " " +
+                      t(`common:currency.${formValues.currency}`)}
+                  </span>
                 </p>
                 <p className="flex items-center justify-between text-primary">
                   <span>{t("home.new-deal.deal-summary.seller-revenue")}</span>
-                  <span>{(subPrice - subPrice * feesPercentage/2).toString() + " "+t(`common:currency.${formValues.currency}`)}</span>
+                  <span>
+                    {(subPrice - (subPrice * feesPercentage) / 2).toString() +
+                      " " +
+                      t(`common:currency.${formValues.currency}`)}
+                  </span>
                 </p>
               </div>
               <p className="text-center font-semibold">
                 {t("home.new-deal.deal-summary.hint")}
               </p>
               <h3 className="text-xl font-bold">
-                {t("home.new-deal.deal-summary.other-dealer-details") +" "+ t(`home.new-deal.deal-summary.${formValues.role==='consumer'?'seller':'customer'}`)} 
+                {t("home.new-deal.deal-summary.other-dealer-details") +
+                  " " +
+                  t(
+                    `home.new-deal.deal-summary.${formValues.role === "consumer" ? "seller" : "customer"}`,
+                  )}
               </h3>
               <div className="space-y-8">
                 <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
@@ -408,11 +442,12 @@ const NewItemForm = () => {
                         <FormControl>
                           <PhoneInput
                             {...field}
-                            className='rounded-md border border-input h-9 bg-transparent focus-visible:outline-none focus-visible:ring-1 focus:border-primary px-3'
+                            className="h-9 rounded-md border border-input bg-transparent px-3 focus:border-primary focus-visible:outline-none focus-visible:ring-1"
                             defaultCountry="DZ"
-                            placeholder={t("home.new-deal.deal-summary.phone-placeholder")}
+                            placeholder={t(
+                              "home.new-deal.deal-summary.phone-placeholder",
+                            )}
                           />
-
                         </FormControl>
                         <FormMessage />
                       </FormItem>

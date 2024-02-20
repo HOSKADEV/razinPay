@@ -10,8 +10,9 @@ import { SiteHeader } from "@/components/layout/site-header";
 
 import localFont from "next/font/local";
 import initTranslations from "@/app/i18n";
-import TranslationsProvider from "@/providers/TranslationsProvider";
+import TranslationsProvider from "@/providers/translations-provider";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { EdgeStoreProvider } from "@/providers/edgestore-provider";
 
 const almarai = localFont({
   src: [
@@ -43,16 +44,17 @@ export default async function RootLayout({
   params: { locale: string };
 }) {
   const session = await auth();
-  const i18nNamespaces = ["landing", "shared", "dashboard", "common"];
+  const i18nNamespaces = ["landing", "shared", "dashboard", "common", "payment"];
   const { resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <SessionProvider session={session}>
+      <EdgeStoreProvider>
       <TranslationsProvider
         namespaces={i18nNamespaces}
         locale={locale}
         resources={resources}
       >
-        <html lang={locale} dir={dir(locale)}>
+        <html lang={locale} dir={dir(locale)} >
           <body className={almarai.className}>
             <Toaster richColors/>
             <SiteHeader />
@@ -61,6 +63,9 @@ export default async function RootLayout({
           </body>
         </html>
       </TranslationsProvider>
+      </EdgeStoreProvider>
     </SessionProvider>
   );
 }
+
+// https://www.escrow.com/login-page?tid=13008037

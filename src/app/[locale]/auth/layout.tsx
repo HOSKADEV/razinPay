@@ -1,5 +1,5 @@
 import initTranslations from "@/app/i18n";
-import TranslationsProvider from "@/providers/TranslationsProvider";
+import TranslationsProvider from "@/providers/translations-provider";
 import Image from "next/image";
 import Link from "next/link";
 

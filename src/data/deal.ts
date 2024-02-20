@@ -1,15 +1,6 @@
 import { db } from "@/lib/db";
 import { Deal } from '@prisma/client';
 
-/**
- * Create a new deal.
- * @param dealData - The data for the new deal.
- */
-export async function createDeal(dealData: Deal) {
-  const createdDeal = await db.deal.create({ data: dealData });
-  db.$disconnect();
-  return createdDeal;
-}
 
 /**
  * Get a deal by its ID.

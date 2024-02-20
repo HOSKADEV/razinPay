@@ -43,6 +43,6 @@ export const createDeal = async (values: z.infer<typeof newItemSchema & typeof c
     return { error: "Failed to create deal" };
   }
 
-  return { success: "Deal created successfully" };
+  return { success: "Deal created successfully", id: deal.id};
 
 };

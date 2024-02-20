@@ -1,5 +1,6 @@
 import initTranslations from "@/app/i18n";
 import { auth } from "@/auth";
+import CopyIdComponent from "@/components/copy-id";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 const i18nNamespaces = ["dashboard"];
@@ -23,7 +24,7 @@ const MyWalletPage = async ({
       <div className="rounded-md bg-gradient-to-r from-primary to-secondary p-8 font-bold text-white shadow-md md:text-xl">
         <div>
           <p>
-            {t("wallet.account-nbr")} {session?.user.id}
+            {t("wallet.account-nbr")} {session?.user.id} <CopyIdComponent id={session?.user?.id!} className="text-white hover:text-primary"/>
           </p>
         </div>
         <Separator className="my-4" />

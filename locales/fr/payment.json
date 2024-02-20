@@ -1,0 +1,23 @@
+{
+    "chose-methods":{
+        "title":"Choisissez votre méthode de paiement",
+        "bank":"Virement bancaire",
+        "post":"Envoi postal",
+        "baridi-mob":"Baridi Mob"
+    },
+    "bank":{
+        "title":"Virement bancaire",
+        "description":"Vous devez effectuer un virement du montant de la transaction.",
+        "party-2-number":"Compte bénéficiaire",
+        "party-1-number":"Compte émetteur",
+        "uploading-image":"Veuillez télécharger le reçu du virement.",
+        "submit-btn":"Envoyer"
+    },
+    "post":{
+        "title":"Envoi postal",
+        "description":"Vous devez suivre la méthode indiquée ci-dessous.",
+        "methode-image-caption":"Méthode de transfert du montant depuis un bureau de poste",
+        "uploading-image":"Veuillez télécharger le reçu de l'envoi postal.",
+        "submit-btn":"Envoyer"
+    }    
+}
