@@ -19,5 +19,9 @@
         "methode-image-caption":"طريقة تحويل المبلغ من مركز البريد",
         "uploading-image":"الرجاء رفع وصل التحويل",
         "submit-btn":"إرسال"
+    },
+    "messages":{
+        "success-payment":"تم الدفع بنجاح",
+        "error-payment":"حدث خطأ أثناء الدفع"
     }
 }

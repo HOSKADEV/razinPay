@@ -42,17 +42,17 @@ export function SiteFooter() {
               <Separator className="my-4 text-muted-foreground" />
               <ul className="space-y-4 font-medium text-muted-foreground">
                 <li>
-                  <Link href="/consumers" className="hover:underline">
+                  <Link href="/consumers-benefits" className="hover:underline">
                     {t("footer.services.item-1")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/broker" className="hover:underline">
+                  <Link href="/brokers-services" className="hover:underline">
                     {t("footer.services.item-2")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sellers" className="hover:underline">
+                  <Link href="/sellers-services" className="hover:underline">
                     {t("footer.services.item-3")}
                   </Link>
                 </li>
@@ -65,17 +65,17 @@ export function SiteFooter() {
               <Separator className="my-4 text-muted-foreground" />
               <ul className="space-y-4 font-medium text-muted-foreground">
                 <li>
-                  <Link href="/consumers" className="hover:underline">
+                  <Link href="/privacy" className="hover:underline">
                     {t("footer.support.item-1")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/consumers" className="hover:underline">
+                  <Link href="/terms" className="hover:underline">
                     {t("footer.support.item-2")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/consumers" className="hover:underline">
+                  <Link href="/about" className="hover:underline">
                     {t("footer.support.item-3")}
                   </Link>
                 </li>
@@ -93,12 +93,12 @@ export function SiteFooter() {
               <Separator className="my-4 text-muted-foreground" />
               <ul className="space-y-4 font-medium text-muted-foreground">
                 <li>
-                  <Link href="/auth/register" className="hover:underline">
+                  <Link href="/about" className="hover:underline">
                     {t("footer.contact.item-1")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/auth/register" className="hover:underline">
+                  <Link href="/contact" className="hover:underline">
                     {t("footer.contact.item-2")}
                   </Link>
                 </li>

@@ -3,7 +3,7 @@ import TranslationsProvider from "@/providers/translations-provider";
 import Image from "next/image";
 import Link from "next/link";
 
-const i18nNamespaces = ["auth"];
+const i18nNamespaces = ["auth","common"];
 const AuthLayout = async ({
   children,
   params: { locale },

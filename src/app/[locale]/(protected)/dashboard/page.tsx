@@ -5,6 +5,9 @@ import { Deal } from "@/types";
 import { columns } from "./columns";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import { currentUser } from "@/lib/auth";
+import { getDeals } from "@/data/deal";
+import { notFound } from "next/navigation";
 const i18nNamespaces = ["dashboard"];
 export const payments: Deal[] = [
   {
@@ -31,7 +34,9 @@ const UserDashboardPage = async ({
   params: { locale: string };
 }) => {
   const { t } = await initTranslations(locale, i18nNamespaces);
-  const data = await getData();
+  const user = await currentUser();
+  if(!user) return notFound();
+  const data = await getData(user.id, user?.email!);
   return (
     <div className="px-3 py-8 md:container">
       <div className="flex items-center justify-between py-8">
@@ -50,33 +55,7 @@ const UserDashboardPage = async ({
 
 export default UserDashboardPage;
 
-async function getData(): Promise<Deal[]> {
-  // Fetch data from my API here.
-  return [
-    {
-      id: 987654321,
-      title: "selling car",
-      price: 131.54,
-      status: "pending",
-      date: new Date().toLocaleDateString(),
-      role: "seller",
-    },
-    {
-      id: 123456789,
-      title: "fjlkdsjfsld car",
-      status: "success",
-      price: 123.54,
-      date: new Date().toLocaleDateString(),
-      role: "broker",
-    },
-    {
-      id: 387637321,
-      title: "bla bla",
-      price: 131.54,
-      status: "pending",
-      date: new Date().toLocaleDateString(),
-      role: "consumer",
-    },
-    // ...
-  ];
+async function getData(userID:string, userEmail?:string) {
+  const deals = await getDeals(userID, userEmail);
+  return deals;
 }

@@ -19,5 +19,10 @@
         "methode-image-caption":"Méthode de transfert du montant depuis un bureau de poste",
         "uploading-image":"Veuillez télécharger le reçu de l'envoi postal.",
         "submit-btn":"Envoyer"
-    }    
+    },
+    "messages":{
+        "success-payment":"Paiement effectué avec succès",
+        "error-payment":"Une erreur s'est produite lors du paiement"
+    }
+    
 }

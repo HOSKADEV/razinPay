@@ -103,10 +103,13 @@ export const newItemSchema = z.object({
   }),
   duration: z
     .string({
-      required_error: "enter the the duration pls.",
+      required_error: "enter the duration please.",
     })
     .min(1, {
-      message: "durarion must be at least 1 days.",
+      message: "duration must be at least 1 day.",
+    })
+    .max(30, {
+      message: "duration must be less than 30 days.",
     }),
   itemName: z
     .string({

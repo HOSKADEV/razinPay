@@ -29,14 +29,16 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useTransition } from "react";
-import { confirmationSchema, newItemSchema } from "@/schemas";
+import { newItemSchema } from "@/schemas";
 import { downloadCSV } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { createDeal } from "@/actions/deal";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 const NewItemForm = () => {
+  const user = useCurrentUser();
   const feesPercentage = 0.1;
   const router = useRouter();
   const { t } = useTranslation(["dashboard", "common"]);
@@ -48,7 +50,7 @@ const NewItemForm = () => {
   const [isPending, startTransition] = useTransition();
   const params = useSearchParams();
   const searchParams = new URLSearchParams(params);
-
+  
   const formMethods = useForm<z.infer<typeof newItemSchema>>({
     resolver: zodResolver(newItemSchema),
     defaultValues: {
@@ -62,7 +64,26 @@ const NewItemForm = () => {
       description: "",
     },
   });
+  
 
+  
+  const confirmationSchema = z.object({
+    party2Email: z.string()
+      .email({
+        message: "Email is required",
+      })
+      .refine((value) => {
+        if (value === user?.email) {
+          return false;
+        }
+        return true;
+      }, {
+        message: "Email cannot be the same as user email",
+      }),
+    party2Phone: z.string().min(1, {
+      message: "Phone number is required",
+    }),
+  });
   const confirmationForm = useForm<z.infer<typeof confirmationSchema>>({
     resolver: zodResolver(confirmationSchema),
     defaultValues: {
@@ -191,13 +212,13 @@ const NewItemForm = () => {
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="dzd">
-                        {t("home.new-deal.currency-options.dz")}
+                        {t("shared:trading.currency.dz")}
                       </SelectItem>
                       <SelectItem value="eur">
-                        {t("home.new-deal.currency-options.eu")}
+                        {t("shared:trading.currency.eu")}
                       </SelectItem>
                       <SelectItem value="gbp">
-                        {t("home.new-deal.currency-options.uk")}
+                        {t("shared:trading.currency.uk")}
                       </SelectItem>
                     </SelectContent>
                   </Select>

@@ -21,3 +21,22 @@ export async function deleteDeal(dealId: string) {
   db.$disconnect();
   return deletedDeal;
 }
+
+/**
+ * Retrieves deals based on the provided user ID and email.
+ * @param userID - The ID of the user.
+ * @param userEmail - The email of the user.
+ * @returns A promise that resolves to an array of deals.
+ */
+export async function getDeals(userID:string, userEmail?:string) {
+  const deals = await db.deal.findMany({
+    where: {
+      OR: [
+        { party1Id: userID },
+        { party2Email: userEmail },
+      ],
+    },
+  });
+  db.$disconnect();
+  return deals;
+}

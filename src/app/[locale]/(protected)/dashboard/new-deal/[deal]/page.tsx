@@ -10,6 +10,6 @@ const Deal = async ({
   if (!deal) {
     return <div>Deal not found</div>;
   }
-  return <Steps />;
+  return <Steps deal={deal}/>;
 };
 export default Deal;

@@ -5,7 +5,6 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { RegisterSchema } from "@/schemas";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -22,11 +21,41 @@ import { register } from "@/actions/register";
 import { useTranslation } from "react-i18next";
 
 export const RegisterForm = () => {
-  const { t } = useTranslation("auth");
+  const { t } = useTranslation(["auth", "common"]);
 
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+
+  const RegisterSchema = z.object({
+    email: z.string().email({
+      message: t("common:form-messages.email"),
+    }),
+    password: z.string().refine(
+      (value) => {
+        if (value.length < 8) {
+          return false;
+        }
+  
+        if (!/[A-Z]/.test(value)) {
+          return false;
+        }
+  
+        if (!/[a-z]/.test(value)) {
+          return false;
+        }
+  
+        if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value)) {
+          return false;
+        }
+  
+        return true;
+      },
+      {
+        message: t("common:form-messages.password-pattern")
+      },
+    ),
+  });
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -71,7 +100,6 @@ export const RegisterForm = () => {
                       {...field}
                       disabled={isPending}
                       placeholder="john.doe@example.com"
-                      type="email"
                       className="placeholder:text-gray-400"
                     />
                   </FormControl>

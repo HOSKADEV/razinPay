@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState, useTransition } from "react";
 import { Input } from "./ui/input";
 import { ImagePlus, X } from "lucide-react";
 import Image from "next/image";
@@ -20,50 +20,69 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import CopyIdComponent from "./copy-id";
+import { createPayment } from "@/actions/payment";
+import { toast } from "sonner";
+import { updateDealPayment } from "@/actions/deal";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
 
-const paymentFromSchema = z.object({
+export const paymentFromSchema = z.object({
   party1Id: z
     .string()
     .min(2, {
-      message: "Party1Id must be at least 2 characters.",
+      message: "party1Id must be at least 2 characters.",
     })
     .max(14, {
-      message: "Party1Id must be at most 14 characters.",
-    }),
-  party2Id: z
-    .string()
-    .min(2, {
-      message: "Party2Id must be at least 2 characters.",
-    })
-    .max(14, {
-      message: "Party2Id must be at most 14 characters.",
+      message: "party1Id must be at most 14 characters.",
     }),
   image: z.string().url(),
 });
 
-const BankTransfer = () => {
+const BankTransferPayment = ({dealId}:{dealId:string}) => {
   const [dragging, setDragging] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState(false);
   const { edgestore } = useEdgeStore();
-
   const { t } = useTranslation(["payment", "common"]);
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+  
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof paymentFromSchema>>({
     resolver: zodResolver(paymentFromSchema),
     defaultValues: {
       party1Id: "",
-      party2Id: "",
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof paymentFromSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof paymentFromSchema>) {
+    startTransition(() => {
+      createPayment({ ...values, dealId })
+        .then((data) => {
+          if (data.error) {
+            toast.error(t("messages.error-payment"), {
+              icon: "🚨",
+            });
+          }
+
+          if (data.success) {
+            toast.success(t("messages.success-payment"), {
+              icon: "🎉",
+            });
+            updateDealPayment({ dealId, paymentId: data.id }).then(() => {
+              router.push(`/dashboard/new-deal/${dealId}`);
+            });
+          }
+        })
+        .catch(() =>
+          toast.error(t("messages.success-payment"), {
+            icon: "🚨",
+          }),
+        );
+    });
   }
 
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
@@ -91,19 +110,16 @@ const BankTransfer = () => {
 
     const files = e.dataTransfer.files;
     if (files?.length && files.length > 1) {
-      console.log("Only one file is allowed");
       setIsUploading(false);
       return;
     }
     const file = files[0];
     if (allowedTypes.includes(file.type)) {
         setSelectedFile(file);
-        console.log("File:", file);
         const imageUrl = await uploadImage(file);
         form.setValue("image", imageUrl);
         setError(false);
     } else {
-      console.log("Invalid file type:", file.type);
       setError(true);
     }
     setIsUploading(false);
@@ -114,7 +130,6 @@ const BankTransfer = () => {
     const files = e.target.files;
 
     if (files?.length && files.length > 1) {
-      console.log("Only one file is allowed");
       setIsUploading(false);
       return;
     }
@@ -122,12 +137,10 @@ const BankTransfer = () => {
       const file = files[0];
       if (allowedTypes.includes(file.type)) {
         setSelectedFile(file);
-        console.log("File:", file);
         const imageUrl = await uploadImage(file);
         form.setValue("image", imageUrl);
         setError(false);
       } else {
-        console.log("Invalid file type:", file.type);
         setError(true);
       }
     }
@@ -151,39 +164,19 @@ const BankTransfer = () => {
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="party2Id"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("payment:bank.party-2-number")}</FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Input {...field} />{" "}
-                    <CopyIdComponent
-                      id={field.value}
-                      className="absolute left-0 top-0"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="relative">
+            <p className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors">0022234555669988</p> 
+            <CopyIdComponent
+                id="0022234555669988" className="absolute left-0 top-0"/>
+          </div>
           <FormField
             control={form.control}
             name="party1Id"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("payment:bank.party-1-number")}</FormLabel>
+                <FormLabel>{t("payment:bank.party-2-number")}</FormLabel>
                 <FormControl>
-                  <div className="relative">
-                    <Input {...field} />{" "}
-                    <CopyIdComponent
-                      id={field.value}
-                      className="absolute left-0 top-0"
-                    />
-                  </div>
+                    <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -192,28 +185,28 @@ const BankTransfer = () => {
           <FormField
             control={form.control}
             name="image"
-            render={({ field }) => (
+            render={({ field: { onChange, value, ...rest } }) => (
               <FormItem>
                 <FormLabel>{t("payment:bank.uploading-image")}</FormLabel>
                 <FormControl>
                   <div>
-                    <label className="grid place-items-center rounded-md border-2 border-dashed border-primary p-10 cursor-pointer">
-                      {/* <div
+                    <label>
+                      <div
                         className={` ${dragging ? "dragging" : ""} grid place-items-center rounded-md border-2 border-dashed border-primary p-10 cursor-pointer`}
                         onDragEnter={handleDragEnter}
                         onDragLeave={handleDragLeave}
                         onDragOver={handleDragOver}
                         onDrop={handleDrop}
-                      > */}
+                      >
                         <ImagePlus size={24} className="text-primary" />
-                      {/* </div> */}
+                      </div>
                       <Input
-                        {...field}
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileInputChange} 
-                        className="hidden"
-                      />
+                      {...rest}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileInputChange}
+                      className="sr-only"
+                    />
                     </label>
                     {selectedFile && !error && !isUploading && (
                       <div className="relative">
@@ -251,7 +244,7 @@ const BankTransfer = () => {
             )}
           />
           <div className="flex justify-center">
-            <Button type="submit" size="lg">{t("payment:bank.submit-btn")}</Button>
+            <Button type="submit" size="lg" disabled={isUploading}>{t("payment:bank.submit-btn")}</Button>
           </div>
         </form>
       </Form>
@@ -259,4 +252,4 @@ const BankTransfer = () => {
   );
 };
 
-export default BankTransfer;
+export default BankTransferPayment;

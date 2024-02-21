@@ -1,10 +1,11 @@
 import initTranslations from "@/app/i18n";
 import { getDealById } from "@/data/deal";
 import React from "react";
-import CopyIdComponent from "../../../../../../components/copy-id";
+import CopyIdComponent from "@/components/copy-id";
 import { currentUser } from "@/lib/auth";
 import { Separator } from "@/components/ui/separator";
 import { notFound } from "next/navigation";
+import { getUserById } from "@/data/user";
 
 const i18nNamespaces = ["dashboard", "common"];
 
@@ -21,8 +22,9 @@ const DealLayout = async ({
   if (!deal) {
     return <div>Deal not found</div>;
   }
-  if (deal.party1Id !== user?.id) {
-    return notFound();
+  const party1 = await getUserById(deal.party1Id)
+  if (party1?.email !== user?.email && deal.party2Email !== user?.email) {
+    // TODO: Redirect to 404 page
   }
   return (
     <section className="space-y-8 px-3 py-8 md:container">
@@ -40,7 +42,7 @@ const DealLayout = async ({
             <CopyIdComponent id={deal.id} className="text-primary" />
           </p>
           <p>
-            <span className="text-primary">{user?.email}</span>{" "}
+            <span className="text-primary">{party1?.email}</span>{" "}
             {" " +
               t(`home.start-deal.roles.${deal.role}.one`) +
               " " +

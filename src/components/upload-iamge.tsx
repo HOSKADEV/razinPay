@@ -47,17 +47,14 @@ const DragAndDrop = () => {
         const files = e.dataTransfer.files;
         const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
         if (files?.length && files.length > 1) {
-            console.log('Only one file is allowed');
             setIsUploading(false);
             return;
         }
         const file = files[0];
         if (allowedTypes.includes(file.type)) {
             setSelectedFile(file);
-            console.log('File:', file);
             uploadImage(file); // Call the uploadImage function
         } else {
-            console.log('Invalid file type:', file.type);
             setError(true);
         }
         setIsUploading(false);
@@ -69,7 +66,6 @@ const DragAndDrop = () => {
         const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
         if (files?.length && files.length > 1) {
-            console.log('Only one file is allowed');
             setIsUploading(false);
             return;
         }
@@ -77,10 +73,8 @@ const DragAndDrop = () => {
             const file = files[0];
             if (allowedTypes.includes(file.type)) {
                 setSelectedFile(file);
-                console.log('File:', file);
                 const imageUrl = uploadImage(file); 
             } else {
-                console.log('Invalid file type:', file.type);
                 setError(true);
             }
         }

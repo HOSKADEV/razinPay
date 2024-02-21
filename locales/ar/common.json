@@ -11,9 +11,9 @@
     "algeria":"الجزائر"
   },
   "currency":{
-    "dz": "دج",
-    "eu": "€",
-    "uk": "£"
+    "dzd": "دج",
+    "eur": "€",
+    "gbp": "£"
   },
   "error": {
     "title": "خطأ",
@@ -28,6 +28,8 @@
     "maxlength": "الرجاء إدخال {0} حروف على الأكثر",
     "pattern": "الرجاء التحقق من القيمة المدخلة",
     "password-mismatch": "كلمة المرور غير متطابقة",
+    "password-pattern": "كلمة المرور يجب أن تحتوي على 8 حروف وحروف كبيرة وصغيرة ورموز",
+    "inavalid-password": "كلمة المرور غير صحيحة",
     "invalid-username": "اسم المستخدم يجب أن يحتوي على حروف وأرقام فقط",
     "invalid-email": "الرجاء إدخال بريد إلكتروني صحيح",
     "invalid-phone": "الرجاء إدخال رقم هاتف صحيح",
@@ -38,5 +40,22 @@
     "invalid-time": "الرجاء إدخال وقت صحيح",
     "invalid-number": "الرجاء إدخال رقم صحيح",
     "invalid-integer": "الرجاء إدخال عدد صحيح"
+  },
+  "deal-status":{
+    "AGREEMENT": "اتفاق",
+    "PAYMENT_PENDING": "في انتظار الدفع",
+    "ADMIN_APPROVAL": "موافقة المشرف",
+    "HAS_BEEN_SHIPPED": "تم الشحن",
+    "VERIFICATION":"التحقق",
+    "ITEM_VALID":"العنصر صالح",
+    "ITEM_NOT_VALID":"العنصر غير صالح",
+    "CLOSED": "مغلق",
+    "CANCELLED": "ملغى",
+    "REFUNDED": "تم استرداد المبلغ",
+    "REFUND_PENDING": "في انتظار استرداد المبلغ",
+    "REFUND_REJECTED": "تم رفض استرداد المبلغ",
+    "REFUND_COMPLETED": "تم استرداد المبلغ بنجاح",
+    "FAILED": "فشل"
   }
+
 }

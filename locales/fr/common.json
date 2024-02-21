@@ -1,22 +1,60 @@
 {
   "domains": {
     "title": "Domaines",
-    "item-1": "Applications et sites web",
+    "item-1": "Applications et sites Web",
     "item-2": "Voitures et camions",
     "item-3": "Motos",
     "item-4": "Immobilier",
     "item-5": "Jeux vidéo et électronique"
   },
   "country":{
-      "algeria": "Algérie"  
+    "algeria":"Algérie"
   },
   "currency":{
-      "dz": "DZD",
-      "eu": "€",
-      "uk": "£"  
+    "dzd": "DZD",
+    "eur": "€",
+    "gbp": "£"
   },
   "error": {
     "title": "Erreur",
-    "uploading-image": "Erreur lors de l'envoi de l'image"
+    "uploading-image": "Une erreur s'est produite lors du téléchargement de l'image"
+  },
+  "form-messages":{
+    "required": "Ce champ est requis",
+    "email": "Veuillez saisir une adresse e-mail valide",
+    "min": "Veuillez saisir une valeur supérieure à {0}",
+    "max": "Veuillez saisir une valeur inférieure à {0}",
+    "minlength": "Veuillez saisir au moins {0} caractères",
+    "maxlength": "Veuillez saisir au maximum {0} caractères",
+    "pattern": "Veuillez vérifier la valeur saisie",
+    "password-mismatch": "Les mots de passe ne correspondent pas",
+    "password-pattern": "Le mot de passe doit contenir 8 caractères, des majuscules, des minuscules et des symboles",
+    "inavalid-password": "Mot de passe incorrect",
+    "invalid-username": "Le nom d'utilisateur ne doit contenir que des lettres et des chiffres",
+    "invalid-email": "Veuillez saisir une adresse e-mail valide",
+    "invalid-phone": "Veuillez saisir un numéro de téléphone valide",
+    "invalid-credit-card": "Veuillez saisir un numéro de carte de crédit valide",
+    "invalid-iban": "Veuillez saisir un numéro IBAN valide",
+    "invalid-url": "Veuillez saisir une URL valide",
+    "invalid-date": "Veuillez saisir une date valide",
+    "invalid-time": "Veuillez saisir une heure valide",
+    "invalid-number": "Veuillez saisir un nombre valide",
+    "invalid-integer": "Veuillez saisir un entier valide"
+  },
+  "deal-status":{
+    "AGREEMENT": "Accord",
+    "PAYMENT_PENDING": "En attente de paiement",
+    "ADMIN_APPROVAL": "Approbation de l'administrateur",
+    "HAS_BEEN_SHIPPED": "A été expédié",
+    "VERIFICATION":"Vérification",
+    "ITEM_VALID":"Article valide",
+    "ITEM_NOT_VALID":"Article non valide",
+    "CLOSED": "Fermé",
+    "CANCELLED": "Annulé",
+    "REFUNDED": "Remboursé",
+    "REFUND_PENDING": "Remboursement en attente",
+    "REFUND_REJECTED": "Remboursement rejeté",
+    "REFUND_COMPLETED": "Remboursement effectué avec succès",
+    "FAILED": "Échoué"
   }
 }

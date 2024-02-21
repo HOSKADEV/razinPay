@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Deal } from "@/types";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { Deal } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -23,18 +24,21 @@ export const columns: ColumnDef<Deal>[] = [
     },
   },
   {
-    accessorKey: "title",
+    accessorKey: "name",
     header: () => {
       const { t } = useTranslation("dashboard");
-      return <span>{t("home.table-header.title")}</span>;
+      return <span className="whitespace-nowrap">{t("home.table-header.title")}</span>;
     },
   },
   {
-    accessorKey: "date",
+    accessorKey: "createdAt",
     header: () => {
       const { t } = useTranslation("dashboard");
-      return <span>{t("home.table-header.date")}</span>;
+      return <span className="whitespace-nowrap">{t("home.table-header.date")}</span>;
     },
+    cell: ({ row }) => {
+      return <time dateTime={row.original.createdAt.toDateString()} className="whitespace-nowrap">{row.original.createdAt.toDateString()}</time>;
+    }
   },
   {
     accessorKey: "price",
@@ -47,8 +51,21 @@ export const columns: ColumnDef<Deal>[] = [
     accessorKey: "role",
     header: () => {
       const { t } = useTranslation("dashboard");
-      return <>{t("home.table-header.role")}</>;
+      return <span>{t("home.table-header.role")}</span>;
     },
+    cell: ({ row }) => {
+      const { t } = useTranslation("dashboard");
+      const user = useCurrentUser()
+      if(user?.email === row.original.party2Email && row.original.role === "seller") {
+        return <span className="whitespace-nowrap">{t("home.table-header.buyer")}</span>;
+      }else if(user?.email === row.original.party2Email && row.original.role === "buyer") {
+        return <span className="whitespace-nowrap">{t("home.table-header.seller")}</span>;
+      }else if(user?.id === row.original.party1Id && row.original.role === "buyer") {
+        return <span className="whitespace-nowrap">{t("home.table-header.buyer")}</span>;
+      }else if(user?.id === row.original.party1Id && row.original.role === "seller") {
+        return <span className="whitespace-nowrap">{t("home.table-header.seller")}</span>;
+      }
+    }
   },
   {
     accessorKey: "status",
@@ -64,5 +81,9 @@ export const columns: ColumnDef<Deal>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => {
+      const { t } = useTranslation("common");
+      return <span className="whitespace-nowrap">{t(`deal-status.${row.original.status}`)}</span>;
+    }
   },
 ];

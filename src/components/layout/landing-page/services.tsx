@@ -92,8 +92,8 @@ const Services = async ({
           </div>
           <div className="flex flex-col space-y-4 max-md:items-center ">
             <CalendarDays className="h-10 w-10 text-primary" />
-            <h3 className="font-semibold">{t("services.item-5-title")}</h3>
-            <p className="">{t("services.item-5-desc")}</p>
+            <h3 className="font-semibold">{t("services.item-6-title")}</h3>
+            <p className="">{t("services.item-6-desc")}</p>
             <Link
               href="#"
               className="mt-7 uppercase text-primary underline-offset-4 hover:underline"

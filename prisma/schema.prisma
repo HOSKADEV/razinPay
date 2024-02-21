@@ -98,7 +98,17 @@ model Deal {
   duration    Int
   party1Id    String
   party2Email String
-  status      String  @default("started")
+  status      String  @default("AGREEMENT")
+  paymentId   String? @unique
   party2Phone String
   createdAt   DateTime @default(now())
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  dealId      String
+  party1Id    String
+  type        String?
+  imageUrl    String
+  createAt    DateTime @default(now())
 }

@@ -24,14 +24,22 @@ import { login } from "@/actions/login";
 import { useTranslation } from "react-i18next";
 
 export const LoginForm = () => {
-  const { t } = useTranslation("auth");
+  const { t } = useTranslation(["auth", "common"]);
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Email already in use with different provider!"
       : "";
-
+  const LoginSchema = z.object({
+    email: z.string().email({
+      message: t("common:form-messages.email"),
+    }),
+    password: z.string().min(1, {
+      message: t("common:form-messages.invalid-password"),
+    }),
+    code: z.optional(z.string()),
+  });
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -114,7 +122,6 @@ export const LoginForm = () => {
                           {...field}
                           disabled={isPending}
                           placeholder="john.doe@example.com"
-                          type="email"
                           className="placeholder:text-gray-400"
                         />
                       </FormControl>

@@ -10,7 +10,6 @@ export const POST = async (req : NextRequest, res:NextResponse) => {
     }
     
     const fileBlob = await (file as any).blob();
-    console.log("File Blob", fileBlob);
     const buffer = await new Promise<Buffer>((resolve, reject) => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -29,7 +28,6 @@ export const POST = async (req : NextRequest, res:NextResponse) => {
         );
         return NextResponse.json({ Message: "Success", status: 201 });
     } catch (error) {
-        console.log("Error occured ", error);
         return NextResponse.json({ Message: "Failed", status: 500 });
     }
 };
