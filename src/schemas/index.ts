@@ -101,16 +101,8 @@ export const newItemSchema = z.object({
   currency: z.string({
     required_error: "Please select an currency to display.",
   }),
-  duration: z
-    .string({
-      required_error: "enter the duration please.",
-    })
-    .min(1, {
-      message: "duration must be at least 1 day.",
-    })
-    .max(30, {
-      message: "duration must be less than 30 days.",
-    }),
+  duration: z.preprocess((value) => parseInt(z.string().parse(value),10),
+    z.number().gte(1, "duration must be at least 1 day.").lte(30, "duration must be less than 30 days.")),
   itemName: z
     .string({
       required_error: "item name is required.",
@@ -118,13 +110,8 @@ export const newItemSchema = z.object({
     .min(2, {
       message: "item name must be at least 2 characters.",
     }),
-  price: z
-    .string({
-      required_error: "Price is required.",
-    })
-    .min(2, {
-      message: "Price must be at least 2 characters.",
-    }),
+  price: z.preprocess((value) => parseInt(z.string().parse(value),10),
+    z.number().gte(10, "price must be at least 10.")),
   domain: z.string({
     required_error: "Please select an domain to display.",
   }),

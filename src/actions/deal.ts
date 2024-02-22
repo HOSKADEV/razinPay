@@ -13,7 +13,12 @@ import { dealStatus } from "@/config/constants";
  * 
  * @param values - The values for the new deal.
  */
-export const createDeal = async (values: z.infer<typeof newItemSchema & typeof confirmationSchema>) => {
+export const createDeal = async (values: z.infer<typeof newItemSchema & typeof confirmationSchema> & {
+  buyerPrice: number;
+  sellerRevenue: number;
+  razinRevenue: number;
+  feesType: string;
+}) => {
   const user = await currentUser();
 
   if (!user) {
@@ -28,8 +33,8 @@ export const createDeal = async (values: z.infer<typeof newItemSchema & typeof c
 
   const deal = await db.deal.create({
     data: {
-      duration: Number.parseFloat(values.duration),
-      price: Number.parseFloat(values.price),
+      duration: values.duration,
+      price: values.price,
       party1Id: user.id,
       name: values.name,
       role: values.role,
@@ -40,6 +45,10 @@ export const createDeal = async (values: z.infer<typeof newItemSchema & typeof c
       status:"AGREEMENT",
       party2Email: values.party2Email,
       party2Phone: values.party2Phone,
+      buyerPrice: values.buyerPrice,
+      sellerRevenue: values.sellerRevenue,
+      razinRevenue: values.razinRevenue,
+      feesType: values.feesType,
     }
   });
 

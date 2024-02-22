@@ -29,7 +29,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useTransition } from "react";
-import { newItemSchema } from "@/schemas";
 import { downloadCSV } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
@@ -46,21 +45,63 @@ const NewItemForm = () => {
   const [formValues, setFormValues] = useState(
     {} as z.infer<typeof newItemSchema>,
   );
-  const [subPrice, setSubPrice] = useState(0);
+  const [pricing, setPricing] = useState({
+    price:10.00,
+    buyerPrice: 0.00,
+    sellerRevenue: 0.00,
+    razinRevenue: 0.00,
+    feesType: "Buyer",
+  });
   const [isPending, startTransition] = useTransition();
   const params = useSearchParams();
   const searchParams = new URLSearchParams(params);
-  
+  const newItemSchema = z.object({
+    name: z.string({
+      required_error: t("common:form-messages.required"),
+    }).min(2, {
+      message:t("common:form-messages.deal-title-min-length"), 
+    }),
+    role: z.string({
+      required_error: t("common:form-messages.required"),
+    }),
+    currency: z.string({
+      required_error: t("common:form-messages.required"),
+    }),
+    duration: z.preprocess((value) => parseInt(z.string().parse(value),10),
+    z.number().gte(1, t("common:form-messages.duration-min")).lte(30, t("common:form-messages.duration-max"))),
+    itemName: z
+      .string({
+        required_error: t("common:form-messages.required"),
+      })
+      .min(3, {
+        message: t("common:form-messages.min"),
+      }),
+    price: z.preprocess((value) => parseInt(z.string().parse(value),10),
+    z.number().gte(10, t("common:form-messages.price-min"))),
+    domain: z.string({
+      required_error: t("common:form-messages.required"),
+    }),
+    description: z
+      .string({
+        required_error:t("common:form-messages.required")
+      })
+      .min(3, {
+        message: t("common:form-messages.min"),
+      })
+      .max(300, {
+        message: t("common:form-messages.max"),
+      }),
+  });
   const formMethods = useForm<z.infer<typeof newItemSchema>>({
     resolver: zodResolver(newItemSchema),
     defaultValues: {
       name: "",
       role: searchParams.get("role") || "",
       currency: searchParams.get("currency") || "",
-      duration: "1",
+      duration: 1,
       itemName: "",
       domain: searchParams.get("domain") || "",
-      price: searchParams.get("amount") || "",
+      price: Number(searchParams.get("amount")) || 10,
       description: "",
     },
   });
@@ -70,7 +111,7 @@ const NewItemForm = () => {
   const confirmationSchema = z.object({
     party2Email: z.string()
       .email({
-        message: "Email is required",
+        message: t("common:form-messages.required")
       })
       .refine((value) => {
         if (value === user?.email) {
@@ -78,10 +119,10 @@ const NewItemForm = () => {
         }
         return true;
       }, {
-        message: "Email cannot be the same as user email",
+        message: t("common:form-messages.you-cant-use-your-email"),
       }),
     party2Phone: z.string().min(1, {
-      message: "Phone number is required",
+      message: t("common:form-messages.required"),
     }),
   });
   const confirmationForm = useForm<z.infer<typeof confirmationSchema>>({
@@ -101,7 +142,13 @@ const NewItemForm = () => {
         <code className="text-white">{JSON.stringify(formData, null, 2)}</code>
       </pre>,
     );
-    setSubPrice(Number(formData.price));
+    setPricing({
+      price: formData.price,
+      buyerPrice: Number(formData.price) + (Number(formData.price) * feesPercentage) / 2,
+      sellerRevenue: Number(formData.price) - (Number(formData.price) * feesPercentage) / 2,
+      razinRevenue: (Number(formData.price) * feesPercentage) / 2,
+      feesType: "Buyer",
+    });
     setFormValues(formData);
   }
 
@@ -109,7 +156,11 @@ const NewItemForm = () => {
     secondaryFormData: z.infer<typeof confirmationSchema>,
   ) {
     startTransition(() => {
-      createDeal({ ...formValues, ...secondaryFormData })
+      createDeal({ ...formValues, ...secondaryFormData, buyerPrice:pricing.buyerPrice,
+        sellerRevenue: pricing.sellerRevenue,
+        razinRevenue: pricing.razinRevenue,
+        feesType: pricing.feesType
+      })
         .then((data) => {
           if (data.error) {
             toast.error(t("home.new-deal.deal-summary.error-message"), {
@@ -236,7 +287,6 @@ const NewItemForm = () => {
                     <Input
                       {...field}
                       placeholder={t("1")}
-                      type="number"
                       className="placeholder:text-gray-500"
                       disabled={showDealSummary || isPending}
                       aria-disabled={showDealSummary || isPending}
@@ -283,7 +333,6 @@ const NewItemForm = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        type="number"
                         placeholder={t(
                           "home.new-deal.deal-details.price-label",
                         )}
@@ -391,7 +440,7 @@ const NewItemForm = () => {
                 <p className="flex items-center justify-between">
                   <span>{t("home.new-deal.deal-summary.sub-total")}</span>
                   <span>
-                    {subPrice.toString() +
+                    {pricing.price.toString() +
                       " " +
                       t(`common:currency.${formValues.currency}`)}
                   </span>
@@ -399,7 +448,7 @@ const NewItemForm = () => {
                 <p className="flex items-center justify-between text-primary">
                   <span>{t("home.new-deal.deal-summary.razin-fees")}</span>
                   <span>
-                    {(subPrice * feesPercentage).toString() +
+                    {pricing.razinRevenue +
                       " " +
                       t(`common:currency.${formValues.currency}`)}
                   </span>
@@ -410,7 +459,7 @@ const NewItemForm = () => {
                 <p className="flex items-center justify-between">
                   <span>{t("home.new-deal.deal-summary.customer-price")}</span>
                   <span>
-                    {(subPrice + (subPrice * feesPercentage) / 2).toString() +
+                    {pricing.buyerPrice.toString() +
                       " " +
                       t(`common:currency.${formValues.currency}`)}
                   </span>
@@ -418,7 +467,7 @@ const NewItemForm = () => {
                 <p className="flex items-center justify-between text-primary">
                   <span>{t("home.new-deal.deal-summary.seller-revenue")}</span>
                   <span>
-                    {(subPrice - (subPrice * feesPercentage) / 2).toString() +
+                    {pricing.sellerRevenue.toString() +
                       " " +
                       t(`common:currency.${formValues.currency}`)}
                   </span>
@@ -448,7 +497,6 @@ const NewItemForm = () => {
                               "home.new-deal.deal-summary.email-placeholder",
                             )}
                             className="placeholder:text-gray-500"
-                            type="email"
                           />
                         </FormControl>
                         <FormMessage />

@@ -34,7 +34,7 @@ export const downloadCSV = (formData: z.infer<typeof newItemSchema>, headers: st
  * @param {string[]} headers - Array of header strings.
  * @returns {string} - CSV formatted string.
  */
-export const convertToCSV = (data: { [key: string]: string }, headers: string[]): string => {
+export const convertToCSV = (data: { [key: string]: string|number }, headers: string[]): string => {
   const rows = [headers.join(",")];
 
   const rowData = headers.map((header) => data[header]);
