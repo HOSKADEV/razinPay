@@ -74,7 +74,7 @@ const NewItemForm = () => {
         required_error: t("common:form-messages.required"),
       })
       .min(3, {
-        message: t("common:form-messages.min"),
+        message: t("common:form-messages.minlength"), 
       }),
     price: z.preprocess((value) => parseInt(z.string().parse(value),10),
     z.number().gte(10, t("common:form-messages.price-min"))),
