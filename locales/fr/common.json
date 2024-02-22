@@ -22,9 +22,13 @@
   "form-messages":{
     "required": "Ce champ est requis",
     "email": "Veuillez saisir une adresse e-mail valide",
-    "min": "Veuillez saisir une valeur supérieure à {0}",
-    "max": "Veuillez saisir une valeur inférieure à {0}",
-    "minlength": "Veuillez saisir au moins {0} caractères",
+    "min": "Veuillez saisir une valeur supérieure à 3",
+    "max": "Veuillez saisir une valeur inférieure à 300",
+    "deal-title-min-length": "Veuillez saisir un titre contenant au moins 10 caractères",
+    "duration-min": "Veuillez saisir une durée supérieure à 1 jour",
+    "duration-max": "Veuillez saisir une durée inférieure à 30 jours",
+    "price-min": "Le prix minimum est de 10",
+    "minlength": "Veuillez saisir au moins 3 caractères",
     "maxlength": "Veuillez saisir au maximum {0} caractères",
     "pattern": "Veuillez vérifier la valeur saisie",
     "password-mismatch": "Les mots de passe ne correspondent pas",
@@ -32,6 +36,7 @@
     "inavalid-password": "Mot de passe incorrect",
     "invalid-username": "Le nom d'utilisateur ne doit contenir que des lettres et des chiffres",
     "invalid-email": "Veuillez saisir une adresse e-mail valide",
+    "you-cant-use-your-email": "Vous ne pouvez pas utiliser votre adresse e-mail",
     "invalid-phone": "Veuillez saisir un numéro de téléphone valide",
     "invalid-credit-card": "Veuillez saisir un numéro de carte de crédit valide",
     "invalid-iban": "Veuillez saisir un numéro IBAN valide",
@@ -39,7 +44,7 @@
     "invalid-date": "Veuillez saisir une date valide",
     "invalid-time": "Veuillez saisir une heure valide",
     "invalid-number": "Veuillez saisir un nombre valide",
-    "invalid-integer": "Veuillez saisir un entier valide"
+    "invalid-integer": "Veuillez saisir un nombre entier valide"
   },
   "deal-status":{
     "AGREEMENT": "Accord",
