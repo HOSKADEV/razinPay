@@ -87,28 +87,31 @@ model TwoFactorConfirmation {
 }
 
 model Deal {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  price       Float
-  role        String
-  currency    String
-  itemName    String
-  domain      String
-  duration    Int
-  party1Id    String
-  party2Email String
-  status      String  @default("AGREEMENT")
-  paymentId   String? @unique
-  party2Phone String
-  createdAt   DateTime @default(now())
+  id            String   @id @default(cuid())
+  name          String
+  description   String
+  price         Float
+  buyerPrice    Float
+  sellerRevenue Float
+  fees          String   @default("50/50")
+  role          String
+  currency      String
+  itemName      String
+  domain        String
+  duration      Int
+  party1Id      String
+  party2Email   String
+  status        String   @default("AGREEMENT")
+  paymentId     String?  @unique
+  party2Phone   String
+  createdAt     DateTime @default(now())
 }
 
 model Payment {
-  id          String   @id @default(cuid())
-  dealId      String
-  party1Id    String
-  type        String?
-  imageUrl    String
-  createAt    DateTime @default(now())
+  id       String   @id @default(cuid())
+  dealId   String
+  party1Id String
+  type     String?
+  imageUrl String
+  createAt DateTime @default(now())
 }
