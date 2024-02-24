@@ -1,5 +1,6 @@
 import { getDealById } from "@/data/deal";
 import Steps from "./steps";
+import { notFound } from "next/navigation";
 
 const Deal = async ({
   params,
@@ -8,7 +9,7 @@ const Deal = async ({
 }) => {
   const deal = await getDealById(params.deal);
   if (!deal) {
-    return <div>Deal not found</div>;
+    return notFound()
   }
   return <Steps deal={deal}/>;
 };

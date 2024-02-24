@@ -20,16 +20,14 @@ const DealLayout = async ({
   const deal = await getDealById(params.deal);
   const user = await currentUser();
   if (!deal) {
-    return <div>Deal not found</div>;
+    return notFound()
   }
   const party1 = await getUserById(deal.party1Id)
-  if (party1?.email !== user?.email && deal.party2Email !== user?.email) {
-    // TODO: Redirect to 404 page
-  }
-  return (
-    <section className="space-y-8 px-3 py-8 md:container">
+  if (deal.party1Id == user?.id || deal.party2Email == user?.email) {
+    return (
+      <section className="space-y-8 px-3 py-8 md:container">
       <div className="space-y-2 rounded-md bg-white p-2 shadow-md md:p-10 lg:px-36 lg:py-16">
-        <div>
+        <div className="space-y-4">
           <h2 className="text-xl font-bold text-primary"> {deal?.name} </h2>
           <time
             dateTime={deal.createdAt.toDateString()}
@@ -41,7 +39,7 @@ const DealLayout = async ({
             {t("home.start-deal.deal-id")} #{deal.id}{" "}
             <CopyIdComponent id={deal.id} className="text-primary" />
           </p>
-          <p>
+          <p className="leading-8">
             <span className="text-primary">{party1?.email}</span>{" "}
             {" " +
               t(`home.start-deal.roles.${deal.role}.one`) +
@@ -80,14 +78,17 @@ const DealLayout = async ({
         </div>
         <div className="flex items-center justify-between text-gray-700">
           <p>{t("home.start-deal.item-details.razin-fees")} Razinpay</p>{" "}
-          <p>{deal.price}</p>
+          <p>{deal.razinRevenue}</p>
         </div>
         <div className="flex items-center justify-between font-semibold text-primary">
-          <p>{t("home.start-deal.item-details.total")}</p> <p>{deal.price}</p>
+          <p>{t("home.start-deal.item-details.total")}</p> <p>{deal.buyerPrice}</p>
         </div>
       </div>
     </section>
   );
+  }else {
+    return notFound()
+  }
 };
 
 export default DealLayout;

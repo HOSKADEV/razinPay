@@ -13,7 +13,7 @@ export const ConsumerStep3 = () => {
                   <span className="flex items-center justify-center w-10 h-10 bg-primary border border-primary rounded-full lg:h-12 lg:w-12 shrink-0">
                       <Check size={24} />
                   </span>
-                  <span className="absolute -bottom-8 right-2 text-primary lg:text-xl">
+                  <span className="absolute -bottom-8 rtl:right-2 text-primary lg:text-xl">
                       {t("home.start-deal.consumer.step-1.name")}
                   </span>
               </li>
@@ -21,7 +21,7 @@ export const ConsumerStep3 = () => {
                   <span className="flex items-center justify-center w-10 h-10 bg-primary border border-primary rounded-full lg:h-12 lg:w-12 shrink-0">
                       <Check size={24} />
                   </span>
-                  <span className="absolute -bottom-8 right-0 text-primary lg:text-xl">
+                  <span className="absolute -bottom-8 rtl:right-0 ltr:-left-4 text-primary lg:text-xl">
                       {t("home.start-deal.consumer.step-2.name")}
                   </span>
               </li>
@@ -29,7 +29,7 @@ export const ConsumerStep3 = () => {
                   <span className="flex items-center justify-center w-10 h-10 bg-primary border border-primary rounded-full lg:h-12 lg:w-12 shrink-0">
                       3
                   </span>
-                  <span className="absolute -bottom-8 -right-4 text-primary tex lg:text-xll">
+                  <span className="absolute -bottom-8 rtl:-right-4 md:ltr:-left-10 text-primary tex lg:text-xl">
                       {t("home.start-deal.consumer.step-3.name")}
                   </span>
               </li>
@@ -37,7 +37,7 @@ export const ConsumerStep3 = () => {
                   <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 border border-primary shrink-0">
                       4
                   </span>
-                  <span className="absolute -bottom-8 right-0 text-primary lg:text-xl">
+                  <span className="absolute -bottom-8 rtl:right-0 ltr:-left-2 text-primary lg:text-xl">
                       {t("home.start-deal.consumer.step-4.name")}
                   </span>
               </li>
@@ -45,7 +45,7 @@ export const ConsumerStep3 = () => {
                   <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 border border-primary shrink-0">
                       5
                   </span>
-                  <span className="absolute -bottom-8 right-0 text-primary lg:text-xl">
+                  <span className="absolute -bottom-8 rtl:right-0 ltr:-left-4 text-primary lg:text-xl">
                       {t("home.start-deal.consumer.step-5.name")}
                   </span>
               </li>

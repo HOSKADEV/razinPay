@@ -1,40 +1,22 @@
-import type { Metadata } from "next";
-export const siteConfig: Metadata = {
+export const siteConfig = {
   metadataBase: new URL("https://razinpay.com"),
-  title: {
-    default: "Razin Pay",
-    template: "%s | Razin Pay",
-  },
-
   manifest: "/site.webmanifest",
-
   applicationName: "Razin Pay",
-
-  creator: "",
-
+  creator: "Your Name",
   authors: [
     {
-      name: "",
-      url: "",
+      name: "Mohamed lifa7",
+      url: "https://mohamed-lifa-7.com",
     },
   ],
-
   icons: [{ rel: "icon", url: "/favicon.ico" }],
-
-  description:
-    "",
-
   openGraph: {
-    title: "",
-    description:
-      "",
     siteName: "Razin Pay",
-    locale: "en_US",
+    locale: "ar_DZ",
     url: new URL("https://razinpay.com"),
     images: ["https://razinpay.com/og-image.png"],
     type: "website",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -46,11 +28,12 @@ export const siteConfig: Metadata = {
       "max-snippet": -1,
     },
   },
-
   twitter: {
-    title: "Razin Pay",
-    creator: "@foobar",
+    title: "Razin Pay - Secure Escrow Service",
+    creator: "@yourtwitterhandle",
     card: "summary_large_image",
     images: ["https://razinpay.com/twitter-og-image.png"],
   },
+  keywords: ["escrow", "secure", "transactions", "buyers", "sellers"],
+  
 };

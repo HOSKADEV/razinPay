@@ -23,7 +23,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { profileFormSchema } from "@/schemas";
 import {
     Select,
     SelectContent,
@@ -45,6 +44,32 @@ export const ProfileForm = () => {
   const { update } = useSession();
   const [isPending, startTransition] = useTransition();
 
+  const profileFormSchema = z.object({
+    firstName: z.optional(z.string().min(3,{
+      message: t("common:form-messages.min-length-3")
+    }).max(50,{
+      message: t("common:form-messages.max-length-50")
+    })),
+    lastName: z.optional(z.string().min(3, {
+      message: t("common:form-messages.min-length-3")
+    }).max(50, {
+      message: t("common:form-messages.max-length-50")
+    })),
+    email: z.optional(z.string().email({
+      message: t("common:form-messages.invalid-email")
+    })),
+    birthDay: z.optional(z.date()),
+    phone: z.optional(z.string().refine((value) => {
+      const phoneRegex = /^(?:\+213|0)(?:(?:5|6|7)\d{8}|[4-9]\d{7})$/;
+      return phoneRegex.test(value);
+    }, {
+      message: t("common:form-messages.invalid-phone")
+    })),
+    country: z.optional(z.string()),
+    address: z.optional(z.string()),
+  });
+  
+  
   const form = useForm<z.infer<typeof profileFormSchema>>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
@@ -69,11 +94,11 @@ export const ProfileForm = () => {
           if (data.success) {
             update();
             setSuccess(data.success);
-            toast(t("profile.form.success-message"))
+            toast.success(t("profile.form.success-message"))
           }
         })
         .catch(() =>{ 
-          toast(t("profile.form.error-message"))
+          toast.error(t("profile.form.error-message"))
         });
     });
   }

@@ -93,9 +93,7 @@
         "step-2": {
           "name": "Paiement",
           "hint": "Veuillez appuyer sur le bouton et suivre les instructions pour effectuer le paiement de la transaction.",
-          "confirm-btn": "Payer",
-          "disbale-btn": "En attente de confirmation",
-          "disable-hint": "Le paiement a été effectué par le client en attente de confirmation de la réception du paiement par l'équipe Razinpay."
+          "confirm-btn": "Payer"
         },
         "step-3": {
           "name": "Transfert de l'élément",
@@ -112,6 +110,10 @@
           "name": "Fermeture",
           "hint": "Vous avez fait un excellent travail jusqu'à présent. Veuillez fermer la transaction une fois toutes les étapes confirmées.",
           "confirm-btn": "Fermer la transaction"
+        },
+        "admin-approval-step":{
+          "disbale-btn": "En attente de confirmation",
+          "disable-hint": "Le paiement a été effectué par le client en attente de confirmation de la réception du paiement par l'équipe Razinpay."
         },
         "closed-step": {
           "hint": "Vous avez terminé toutes les étapes avec succès. Nous espérons que vous avez apprécié votre expérience avec nous.",

@@ -1,4 +1,12 @@
 {
+  "metadata":{
+    "appName": "Razin Pay",
+    "title": {
+      "default": "Razin Pay | Service d'entiercement sécurisé"
+    },
+    "description": "Razin Pay est un service d'entiercement en ligne sécurisé qui facilite les transactions sécurisées entre acheteurs et vendeurs.",
+    "keywords": ["entiercement", "service d'entiercement", "entiercement en ligne", "entiercement sécurisé", "service d'entiercement sécurisé", "entiercement en ligne sécurisé", "entiercement en ligne"]
+  },
   "domains": {
     "title": "Domaines",
     "item-1": "Applications et sites Web",
